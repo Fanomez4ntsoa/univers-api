@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\CRM\Controllers\ChantierController;
 use App\Modules\CRM\Controllers\ClientController;
 use App\Modules\CRM\Controllers\InvoiceController;
 use App\Modules\CRM\Controllers\ProspectController;
@@ -63,6 +64,22 @@ Route::middleware('core.auth')->group(function () {
         Route::post('/{id}/cancel', [InvoiceController::class, 'cancel']);
     });
 
-    // TODO: chantiers, company_settings
+    // --- CRM : Chantiers ---
+    Route::prefix('batiment/chantiers')->group(function () {
+        Route::get('/', [ChantierController::class, 'index']);
+        Route::post('/', [ChantierController::class, 'store']);
+        Route::get('/pipeline', [ChantierController::class, 'pipeline']);
+        Route::get('/{id}', [ChantierController::class, 'show']);
+        Route::put('/{id}', [ChantierController::class, 'update']);
+        Route::delete('/{id}', [ChantierController::class, 'destroy']);
+        Route::put('/{id}/move-stage', [ChantierController::class, 'moveStage']);
+        Route::post('/{id}/documents', [ChantierController::class, 'addDocument']);
+        Route::delete('/{id}/documents/{documentId}', [ChantierController::class, 'removeDocument']);
+        Route::post('/{id}/comments', [ChantierController::class, 'addComment']);
+        Route::post('/{id}/time-entries', [ChantierController::class, 'addTimeEntry']);
+        Route::post('/{id}/costs', [ChantierController::class, 'addCost']);
+    });
+
+    // TODO: company_settings
 
 });

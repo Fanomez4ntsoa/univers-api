@@ -239,6 +239,19 @@ DELETE /api/batiment/invoices/{id}                 → Supprimer (bloqué si pai
 POST   /api/batiment/invoices/{id}/send            → Marquer envoyée                                                    → **(testé et validé Insomnia)**
 POST   /api/batiment/invoices/{id}/mark-paid       → Marquer payée (met à jour amount_paid/due + client revenue)        → **(testé et validé Insomnia)**
 POST   /api/batiment/invoices/{id}/cancel          → Annuler (bloqué si paid)                                           → **(testé et validé Insomnia)**
+
+GET    /api/batiment/chantiers                     → Liste des chantiers (?status=)
+POST   /api/batiment/chantiers                     → Créer un chantier (auto-remplissage depuis devis)
+GET    /api/batiment/chantiers/pipeline             → Vue pipeline groupée par stage
+GET    /api/batiment/chantiers/{id}                → Détail enrichi (+ documents, comments, time_entries, costs)
+PUT    /api/batiment/chantiers/{id}                → Modifier
+DELETE /api/batiment/chantiers/{id}                → Supprimer (bloqué si in_progress/completed)
+PUT    /api/batiment/chantiers/{id}/move-stage      → Déplacer dans le pipeline (auto actual_start/end_date)
+POST   /api/batiment/chantiers/{id}/documents       → Ajouter un document
+DELETE /api/batiment/chantiers/{id}/documents/{docId} → Supprimer un document
+POST   /api/batiment/chantiers/{id}/comments        → Ajouter un commentaire
+POST   /api/batiment/chantiers/{id}/time-entries     → Ajouter du temps (recalcule rentabilité)
+POST   /api/batiment/chantiers/{id}/costs            → Ajouter un coût (recalcule rentabilité)
 ```
 
 ---
@@ -253,9 +266,9 @@ POST   /api/batiment/invoices/{id}/cancel          → Annuler (bloqué si paid)
 - Module CRM `Clients` : CRUD + notes + portal token + conversion depuis prospect + compteurs stats *(testé et validé Insomnia)*
 - Module CRM `Quotes` : CRUD + calcul auto totaux + send + sign + duplicate + convert-to-invoice *(testé et validé Insomnia)*
 - Module CRM `Invoices` : CRUD + send + mark-paid + cancel + client denormalization + auto totaux *(testé et validé Insomnia)*
+- Module CRM `Chantiers` : CRUD + pipeline + move-stage + documents + comments + time-entries + costs + rentabilité auto
 
 ### 🔄 À faire (CRM)
-- Module `Chantiers` → CRUD + pipeline + géolocalisation + assigned_workers
 - Module `CompanySettings` → GET + PUT (un enregistrement par artisan)
 
 ### 📋 Plus tard
@@ -380,5 +393,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 31 Mars 2026 — Module Invoices terminé (CRUD + send + mark-paid + cancel)*
+*Dernière mise à jour : 31 Mars 2026 — Module Chantiers terminé (CRUD + pipeline + documents + time + costs + rentabilité)*
 *Rédigé par : Fanomezantsoa + Claude*
