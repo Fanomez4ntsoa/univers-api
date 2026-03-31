@@ -1,5 +1,8 @@
 # CLAUDE.md — AbracadaBati v2
 
+> **Lire aussi : `ROADMAP_MIGRATION.md`** contient l'état d'avancement
+> complet de la migration Emergent → Laravel. À consulter avant chaque nouveau module.
+
 > **Lis ce fichier entièrement avant de faire quoi que ce soit.**
 > Il contient toutes les décisions d'architecture, les règles du projet, et le contexte nécessaire pour travailler correctement.
 
