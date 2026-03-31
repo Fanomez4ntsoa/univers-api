@@ -299,5 +299,41 @@ CACHE_STORE=file
 
 ---
 
+## 🌿 Git Workflow — Règles obligatoires
+
+### Branche principale
+- `main` est la branche de production — on n'y pousse jamais directement
+
+### Nomenclature des branches
+| Type | Préfixe | Exemple |
+|------|---------|---------|
+| Nouvelle fonctionnalité | `feature/` | `feature/crm-quotes` |
+| Correction de bug | `fix/` | `fix/prospect-conversion` |
+| Refactoring | `refactor/` | `refactor/core-auth-service` |
+| Configuration / maintenance | `chore/` | `chore/update-env-example` |
+| Documentation | `docs/` | `docs/update-claude-md` |
+
+### Cycle de vie d'une branche
+```bash
+# 1. Toujours partir de main à jour
+git checkout main && git pull
+
+# 2. Créer la branche
+git checkout -b feature/nom-du-module
+
+# 3. Développer + committer au fil de l'eau
+git commit -m "feat: description claire"
+
+# 4. Tests validés sur la branche
+# 5. Soumettre pour validation (Fanomezantsoa valide)
+# 6. Merge vers main uniquement après accord
+# 7. Retests sur main après merge
+```
+
+### Gestion des conflits
+- Claude **ne résout jamais un conflit seul**
+- En cas de conflit : **signaler + expliquer + proposer la résolution**
+- **Fanomezantsoa valide** la résolution avant que Claude applique quoi que ce soit
+
 *Dernière mise à jour : 31 Mars 2026 — Module Clients terminé (CRUD + notes + portal token + conversion)*
 *Rédigé par : Fanomezantsoa + Claude*
