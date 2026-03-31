@@ -240,18 +240,18 @@ POST   /api/batiment/invoices/{id}/send            → Marquer envoyée         
 POST   /api/batiment/invoices/{id}/mark-paid       → Marquer payée (met à jour amount_paid/due + client revenue)        → **(testé et validé Insomnia)**
 POST   /api/batiment/invoices/{id}/cancel          → Annuler (bloqué si paid)                                           → **(testé et validé Insomnia)**
 
-GET    /api/batiment/chantiers                     → Liste des chantiers (?status=)
-POST   /api/batiment/chantiers                     → Créer un chantier (auto-remplissage depuis devis)
-GET    /api/batiment/chantiers/pipeline             → Vue pipeline groupée par stage
-GET    /api/batiment/chantiers/{id}                → Détail enrichi (+ documents, comments, time_entries, costs)
-PUT    /api/batiment/chantiers/{id}                → Modifier
-DELETE /api/batiment/chantiers/{id}                → Supprimer (bloqué si in_progress/completed)
-PUT    /api/batiment/chantiers/{id}/move-stage      → Déplacer dans le pipeline (auto actual_start/end_date)
-POST   /api/batiment/chantiers/{id}/documents       → Ajouter un document
-DELETE /api/batiment/chantiers/{id}/documents/{docId} → Supprimer un document
-POST   /api/batiment/chantiers/{id}/comments        → Ajouter un commentaire
-POST   /api/batiment/chantiers/{id}/time-entries     → Ajouter du temps (recalcule rentabilité)
-POST   /api/batiment/chantiers/{id}/costs            → Ajouter un coût (recalcule rentabilité)
+GET    /api/batiment/chantiers                     → Liste des chantiers (?status=)                                     → **(testé et validé Insomnia)**
+POST   /api/batiment/chantiers                     → Créer un chantier (auto-remplissage depuis devis)                  → **(testé et validé Insomnia)**
+GET    /api/batiment/chantiers/pipeline            → Vue pipeline groupée par stage                                     → **(testé et validé Insomnia)**
+GET    /api/batiment/chantiers/{id}                → Détail enrichi (+ documents, comments, time_entries, costs)        → **(testé et validé Insomnia)**
+PUT    /api/batiment/chantiers/{id}                → Modifier                                                           → **(testé et validé Insomnia)**
+DELETE /api/batiment/chantiers/{id}                → Supprimer (bloqué si in_progress/completed)                        → **(testé et validé Insomnia)**
+PUT    /api/batiment/chantiers/{id}/move-stage      → Déplacer dans le pipeline (auto actual_start/end_date)            → **(testé et validé Insomnia)**        
+POST   /api/batiment/chantiers/{id}/documents       → Ajouter un document                                               → **(testé et validé Insomnia)**
+DELETE /api/batiment/chantiers/{id}/documents/{docId} → Supprimer un document                                           → **(testé et validé Insomnia)**
+POST   /api/batiment/chantiers/{id}/comments        → Ajouter un commentaire                                            → **(testé et validé Insomnia)**
+POST   /api/batiment/chantiers/{id}/time-entries     → Ajouter du temps (recalcule rentabilité)                         → **(testé et validé Insomnia)**
+POST   /api/batiment/chantiers/{id}/costs            → Ajouter un coût (recalcule rentabilité)                          → **(testé et validé Insomnia)**
 ```
 
 ---
@@ -266,7 +266,7 @@ POST   /api/batiment/chantiers/{id}/costs            → Ajouter un coût (recal
 - Module CRM `Clients` : CRUD + notes + portal token + conversion depuis prospect + compteurs stats *(testé et validé Insomnia)*
 - Module CRM `Quotes` : CRUD + calcul auto totaux + send + sign + duplicate + convert-to-invoice *(testé et validé Insomnia)*
 - Module CRM `Invoices` : CRUD + send + mark-paid + cancel + client denormalization + auto totaux *(testé et validé Insomnia)*
-- Module CRM `Chantiers` : CRUD + pipeline + move-stage + documents + comments + time-entries + costs + rentabilité auto
+- Module CRM `Chantiers` : CRUD + pipeline + move-stage + documents + comments + time-entries + costs + rentabilité auto *(testé et validé Insomnia)*
 
 ### 🔄 À faire (CRM)
 - Module `CompanySettings` → GET + PUT (un enregistrement par artisan)
