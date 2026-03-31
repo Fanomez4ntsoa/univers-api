@@ -205,30 +205,31 @@ chantier.pipeline_stage : planification | en_cours | reception | facture | clos
 
 ### Protégés (middleware `core.auth` — Bearer JWT du Core)
 ```
-GET    /api/batiment/prospects                      → Liste des prospects
-POST   /api/batiment/prospects                      → Créer un prospect
-GET    /api/batiment/prospects/{id}                 → Détail
-PUT    /api/batiment/prospects/{id}                 → Modifier
-DELETE /api/batiment/prospects/{id}                 → Supprimer
-POST   /api/batiment/prospects/{id}/convert-to-client → Convertir en client
+GET    /api/batiment/prospects                      → Liste des prospects                                   → **(testé et validé Insomnia)**
+POST   /api/batiment/prospects                      → Créer un prospect                                     → **(testé et validé Insomnia)**
+GET    /api/batiment/prospects/{id}                 → Détail                                                → **(testé et validé Insomnia)**
+PUT    /api/batiment/prospects/{id}                 → Modifier                                              → **(testé et validé Insomnia)**
+DELETE /api/batiment/prospects/{id}                 → Supprimer                                             → **(testé et validé Insomnia)**
+POST   /api/batiment/prospects/{id}/convert-to-client → Convertir en client                                 → **(testé et validé Insomnia)**
 
-GET    /api/batiment/clients                        → Liste des clients
-POST   /api/batiment/clients                        → Créer un client
-GET    /api/batiment/clients/{id}                   → Détail enrichi (+ quotes, invoices, chantiers, notes)
-PUT    /api/batiment/clients/{id}                   → Modifier
-DELETE /api/batiment/clients/{id}                   → Supprimer
-POST   /api/batiment/clients/{id}/notes             → Ajouter une note
-POST   /api/batiment/clients/{id}/generate-portal-token → Générer un token d'accès client
+GET    /api/batiment/clients                        → Liste des clients                                     → **(testé et validé Insomnia)**
+POST   /api/batiment/clients                        → Créer un client                                       → **(testé et validé Insomnia)**
+GET    /api/batiment/clients/{id}                   → Détail enrichi (+ quotes, invoices, chantiers, notes) → **(testé et validé Insomnia)**
+PUT    /api/batiment/clients/{id}                   → Modifier                                              → **(testé et validé Insomnia)**
+DELETE /api/batiment/clients/{id}                   → Supprimer                                             → **(testé et validé Insomnia)**
+POST   /api/batiment/clients/{id}/notes             → Ajouter une note                                      → **(testé et validé Insomnia)**
+POST   /api/batiment/clients/{id}/generate-portal-token → Générer un token d'accès client                   → **(testé et validé Insomnia)**
 
-GET    /api/batiment/quotes                        → Liste des devis (?status=, ?client_id=)
-POST   /api/batiment/quotes                        → Créer un devis (calcul auto des totaux)
-GET    /api/batiment/quotes/{id}                   → Détail
-PUT    /api/batiment/quotes/{id}                   → Modifier (bloqué si accepted/invoiced)
-DELETE /api/batiment/quotes/{id}                   → Supprimer (bloqué si accepted/invoiced)
-POST   /api/batiment/quotes/{id}/send              → Marquer envoyé
-POST   /api/batiment/quotes/{id}/sign              → Signer (accepter)
-POST   /api/batiment/quotes/{id}/duplicate         → Dupliquer en brouillon
-POST   /api/batiment/quotes/{id}/convert-invoice   → Convertir en facture
+GET    /api/batiment/quotes                        → Liste des devis (?status=, ?client_id=)                → **(testé et validé Insomnia)**
+POST   /api/batiment/quotes                        → Créer un devis (calcul auto des totaux)                → **(testé et validé Insomnia)**
+GET    /api/batiment/quotes/{id}                   → Détail                                                 → **(testé et validé Insomnia)**
+PUT    /api/batiment/quotes/{id}                   → Modifier (bloqué si accepted/invoiced)                 → **(testé et validé Insomnia)**
+DELETE /api/batiment/quotes/{id}                   → Supprimer (bloqué si accepted/invoiced)                → **(testé et validé Insomnia)**
+POST   /api/batiment/quotes/{id}/send              → Marquer envoyé                                         → **(testé et validé Insomnia)**
+POST   /api/batiment/quotes/{id}/sign              → Signer (accepter)                                      → **(testé et validé Insomnia)**
+                                                    Body requis : { signature_image: "data:image/png;base64,...", signed_by: "Nom", signed_at: "YYYY-MM-DD" }
+POST   /api/batiment/quotes/{id}/duplicate         → Dupliquer en brouillon                                 → **(testé et validé Insomnia)**
+POST   /api/batiment/quotes/{id}/convert-invoice   → Convertir en facture                                   → **(testé et validé Insomnia)**
 ```
 
 ---
@@ -239,9 +240,9 @@ POST   /api/batiment/quotes/{id}/convert-invoice   → Convertir en facture
 - `CoreAuthMiddleware` + `CoreAuthService` → connexion au Core via `/api/me`
 - Migration `users` locale avec `core_uuid`
 - Migrations CRM : prospects, clients, quotes, invoices, chantiers, company_settings, client_notes
-- Module CRM `Prospects` : CRUD complet + `POST /{id}/convert-to-client`
-- Module CRM `Clients` : CRUD + notes + portal token + conversion depuis prospect + compteurs stats
-- Module CRM `Quotes` : CRUD + calcul auto totaux + send + sign + duplicate + convert-to-invoice
+- Module CRM `Prospects` : CRUD complet + `POST /{id}/convert-to-client` *(testé et validé Insomnia)*
+- Module CRM `Clients` : CRUD + notes + portal token + conversion depuis prospect + compteurs stats *(testé et validé Insomnia)*
+- Module CRM `Quotes` : CRUD + calcul auto totaux + send + sign + duplicate + convert-to-invoice *(testé et validé Insomnia)*
 
 ### 🔄 À faire (CRM)
 - Module `Invoices` → CRUD + marquage payé + génération PDF
@@ -334,6 +335,29 @@ git commit -m "[FEAT]: description claire"
 - Claude **ne résout jamais un conflit seul**
 - En cas de conflit : **signaler + expliquer + proposer la résolution**
 - **Fanomezantsoa valide** la résolution avant que Claude applique quoi que ce soit
+
+---
+
+## 🧪 Testing — Règles obligatoires
+
+### Principe
+Chaque module terminé doit être testé dans Insomnia **avant** de merger vers `main`
+et **avant** de commencer le module suivant.
+Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique métier.
+
+### Checklist minimum par module
+- [ ] CREATE → l'enregistrement est bien créé avec les bons champs
+- [ ] READ (liste + détail) → les données retournées sont correctes
+- [ ] UPDATE → la modification est bien appliquée
+- [ ] DELETE → la suppression fonctionne
+- [ ] Actions métier → (ex: convert, send, sign...) testées une par une
+- [ ] Cas d'erreur → mauvais statut, ID inexistant, champs manquants
+
+### Setup Insomnia
+- Base URL : `http://localhost:8001`
+- Header obligatoire : `Accept: application/json`
+- Header auth : `Authorization: Bearer <token_du_core>`
+- Obtenir le token : `POST http://localhost:8000/api/auth/login`
 
 ---
 
