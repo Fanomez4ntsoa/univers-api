@@ -2,6 +2,7 @@
 
 use App\Modules\CRM\Controllers\ChantierController;
 use App\Modules\CRM\Controllers\ClientController;
+use App\Modules\CRM\Controllers\CompanySettingController;
 use App\Modules\CRM\Controllers\InvoiceController;
 use App\Modules\CRM\Controllers\ProspectController;
 use App\Modules\CRM\Controllers\QuoteController;
@@ -80,6 +81,10 @@ Route::middleware('core.auth')->group(function () {
         Route::post('/{id}/costs', [ChantierController::class, 'addCost']);
     });
 
-    // TODO: company_settings
+    // --- CRM : Paramètres entreprise ---
+    Route::prefix('batiment/settings')->group(function () {
+        Route::get('/company', [CompanySettingController::class, 'show']);
+        Route::put('/company', [CompanySettingController::class, 'update']);
+    });
 
 });

@@ -8,7 +8,7 @@
 
 ## 📍 Position actuelle
 ```
-Phase 1 CRM ████████████████████░  95% — CompanySettings restant
+Phase 1 CRM █████████████████████ 100% — COMPLÈTE ✅
 Phase 2-5   ░░░░░░░░░░░░░░░░░░░░░   0% — pas encore commencé
 ```
 
@@ -24,12 +24,7 @@ Phase 2-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 | Quotes (Devis) | `batiment_routes.py` + `devis_routes.py` + `devis_models.py` | `main` | ✅ Terminé + testé |
 | Invoices (Factures) | `batiment_routes.py` + `devis_routes.py` | `main` | ✅ Terminé + testé |
 | Chantiers | `batiment_routes.py` + `test_pipeline_chantier.py` | `main` | ✅ Terminé + testé |
-| **CompanySettings** | `batiment_routes.py` | `feature/crm-company-settings` | 🔄 À faire |
-
-### Prochaine branche : `feature/crm-company-settings`
-- GET `/api/batiment/company-settings` → récupérer les paramètres de l'artisan
-- PUT `/api/batiment/company-settings` → mettre à jour (1 enregistrement par user)
-- Champs à vérifier dans Emergent : `batiment_routes.py` → CompanySettings
+| CompanySettings | `batiment_routes.py` | `feature/crm-company-settings` | ✅ Terminé + testé |
 
 ---
 
@@ -118,5 +113,5 @@ Phase 2-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 31 Mars 2026 — Phase 1 à 95% — Chantiers mergé*
+*Dernière mise à jour : 31 Mars 2026 — Phase 1 COMPLÈTE à 100% — CompanySettings terminé*
 *Rédigé par : Fanomezantsoa + Claude*

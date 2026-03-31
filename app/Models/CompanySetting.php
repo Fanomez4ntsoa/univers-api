@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'postal_code',
     'phone',
     'email',
+    'website',
     'quote_counter',
     'invoice_counter',
 ])]

@@ -255,6 +255,9 @@ DELETE /api/batiment/chantiers/{id}/documents/{docId} → Supprimer un document 
 POST   /api/batiment/chantiers/{id}/comments        → Ajouter un commentaire                                            → **(testé et validé Insomnia)**
 POST   /api/batiment/chantiers/{id}/time-entries     → Ajouter du temps (recalcule rentabilité)                         → **(testé et validé Insomnia)**
 POST   /api/batiment/chantiers/{id}/costs            → Ajouter un coût (recalcule rentabilité)                          → **(testé et validé Insomnia)**
+
+GET    /api/batiment/settings/company               → Paramètres entreprise (auto-créé si inexistant)
+PUT    /api/batiment/settings/company               → Mettre à jour (quote_counter/invoice_counter non modifiables)
 ```
 
 ---
@@ -270,11 +273,9 @@ POST   /api/batiment/chantiers/{id}/costs            → Ajouter un coût (recal
 - Module CRM `Quotes` : CRUD + calcul auto totaux + send + sign + duplicate + convert-to-invoice *(testé et validé Insomnia)*
 - Module CRM `Invoices` : CRUD + send + mark-paid + cancel + client denormalization + auto totaux *(testé et validé Insomnia)*
 - Module CRM `Chantiers` : CRUD + pipeline + move-stage + documents + comments + time-entries + costs + rentabilité auto *(testé et validé Insomnia)*
+- Module CRM `CompanySettings` : GET (auto-create) + PUT (counters protégés)
 
-### 🔄 À faire (CRM)
-- Module `CompanySettings` → GET + PUT (un enregistrement par artisan)
-
-### 📋 Plus tard
+### 📋 Plus tard (Phase 2+)
 - Ecosystem social : posts, shops, listings, jobs, events
 - Module matching : `project_requests` → artisans
 - Vérification du rôle `universe_slug = bati` sur le Core
