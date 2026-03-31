@@ -256,8 +256,8 @@ POST   /api/batiment/chantiers/{id}/comments        → Ajouter un commentaire  
 POST   /api/batiment/chantiers/{id}/time-entries     → Ajouter du temps (recalcule rentabilité)                         → **(testé et validé Insomnia)**
 POST   /api/batiment/chantiers/{id}/costs            → Ajouter un coût (recalcule rentabilité)                          → **(testé et validé Insomnia)**
 
-GET    /api/batiment/settings/company               → Paramètres entreprise (auto-créé si inexistant)
-PUT    /api/batiment/settings/company               → Mettre à jour (quote_counter/invoice_counter non modifiables)
+GET    /api/batiment/settings/company               → Paramètres entreprise (auto-créé si inexistant)                   → **(testé et validé Insomnia)**
+PUT    /api/batiment/settings/company               → Mettre à jour (quote_counter/invoice_counter non modifiables)     → **(testé et validé Insomnia)**
 ```
 
 ---
