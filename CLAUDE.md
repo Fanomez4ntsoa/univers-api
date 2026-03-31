@@ -230,6 +230,15 @@ POST   /api/batiment/quotes/{id}/sign              → Signer (accepter)        
                                                     Body requis : { signature_image: "data:image/png;base64,...", signed_by: "Nom", signed_at: "YYYY-MM-DD" }
 POST   /api/batiment/quotes/{id}/duplicate         → Dupliquer en brouillon                                 → **(testé et validé Insomnia)**
 POST   /api/batiment/quotes/{id}/convert-invoice   → Convertir en facture                                   → **(testé et validé Insomnia)**
+
+GET    /api/batiment/invoices                      → Liste des factures (?status=, ?client_id=)
+POST   /api/batiment/invoices                      → Créer une facture (calcul auto des totaux)
+GET    /api/batiment/invoices/{id}                 → Détail (+ quote liée)
+PUT    /api/batiment/invoices/{id}                 → Modifier (bloqué si pas draft)
+DELETE /api/batiment/invoices/{id}                 → Supprimer (bloqué si paid/partial)
+POST   /api/batiment/invoices/{id}/send            → Marquer envoyée
+POST   /api/batiment/invoices/{id}/mark-paid       → Marquer payée (met à jour amount_paid/due + client revenue)
+POST   /api/batiment/invoices/{id}/cancel          → Annuler (bloqué si paid)
 ```
 
 ---
@@ -243,9 +252,9 @@ POST   /api/batiment/quotes/{id}/convert-invoice   → Convertir en facture     
 - Module CRM `Prospects` : CRUD complet + `POST /{id}/convert-to-client` *(testé et validé Insomnia)*
 - Module CRM `Clients` : CRUD + notes + portal token + conversion depuis prospect + compteurs stats *(testé et validé Insomnia)*
 - Module CRM `Quotes` : CRUD + calcul auto totaux + send + sign + duplicate + convert-to-invoice *(testé et validé Insomnia)*
+- Module CRM `Invoices` : CRUD + send + mark-paid + cancel + client denormalization + auto totaux
 
 ### 🔄 À faire (CRM)
-- Module `Invoices` → CRUD + marquage payé + génération PDF
 - Module `Chantiers` → CRUD + pipeline + géolocalisation + assigned_workers
 - Module `CompanySettings` → GET + PUT (un enregistrement par artisan)
 
@@ -371,5 +380,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 31 Mars 2026 — Module Quotes terminé (CRUD + calculs + send + sign + duplicate + convert)*
+*Dernière mise à jour : 31 Mars 2026 — Module Invoices terminé (CRUD + send + mark-paid + cancel)*
 *Rédigé par : Fanomezantsoa + Claude*

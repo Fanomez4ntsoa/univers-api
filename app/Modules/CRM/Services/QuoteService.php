@@ -168,18 +168,28 @@ class QuoteService
             abort(422, 'Seul un devis accepté et non encore facturé peut être converti.');
         }
 
+        $client = Client::findOrFail($quote->client_id);
+
         $invoice = Invoice::create([
-            'owner_id'       => $ownerId,
-            'client_id'      => $quote->client_id,
-            'quote_id'       => $quote->id,
-            'invoice_number' => $this->generateInvoiceNumber(),
-            'items'          => $quote->items,
-            'subtotal'       => $quote->subtotal,
-            'tax_rate'       => $quote->tax_rate,
-            'tax_amount'     => $quote->tax_amount,
-            'total'          => $quote->total,
-            'status'         => 'draft',
-            'due_date'       => now()->addDays($quote->payment_delay_days),
+            'owner_id'         => $ownerId,
+            'client_id'        => $quote->client_id,
+            'client_name'      => $client->name,
+            'client_email'     => $client->email,
+            'client_address'   => $client->address,
+            'client_siret'     => $client->siret,
+            'client_tva_number' => null,
+            'quote_id'         => $quote->id,
+            'invoice_number'   => $this->generateInvoiceNumber(),
+            'items'            => $quote->items,
+            'subtotal'         => $quote->subtotal,
+            'tax_rate'         => $quote->tax_rate,
+            'tax_amount'       => $quote->tax_amount,
+            'total'            => $quote->total,
+            'amount_paid'      => 0,
+            'amount_due'       => $quote->total,
+            'payment_terms'    => $quote->payment_terms ?? 'Paiement à réception',
+            'status'           => 'draft',
+            'due_date'         => now()->addDays($quote->payment_delay_days),
         ]);
 
         $quote->update([

@@ -11,6 +11,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable([
     'owner_id',
     'client_id',
+    'client_name',
+    'client_email',
+    'client_address',
+    'client_siret',
+    'client_tva_number',
     'quote_id',
     'invoice_number',
     'items',
@@ -18,9 +23,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'tax_rate',
     'tax_amount',
     'total',
+    'amount_paid',
+    'amount_due',
+    'payment_terms',
+    'notes',
     'status',
     'due_date',
     'payment_date',
+    'sent_at',
+    'paid_at',
 ])]
 class Invoice extends Model
 {
@@ -34,9 +45,23 @@ class Invoice extends Model
             'tax_rate'     => 'decimal:2',
             'tax_amount'   => 'decimal:2',
             'total'        => 'decimal:2',
+            'amount_paid'  => 'decimal:2',
+            'amount_due'   => 'decimal:2',
             'due_date'     => 'date',
             'payment_date' => 'date',
+            'sent_at'      => 'datetime',
+            'paid_at'      => 'datetime',
         ];
+    }
+
+    public function isEditable(): bool
+    {
+        return in_array($this->status, ['draft']);
+    }
+
+    public function isPaid(): bool
+    {
+        return $this->status === 'paid';
     }
 
     public function owner(): BelongsTo

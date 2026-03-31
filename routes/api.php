@@ -1,6 +1,7 @@
 <?php
 
 use App\Modules\CRM\Controllers\ClientController;
+use App\Modules\CRM\Controllers\InvoiceController;
 use App\Modules\CRM\Controllers\ProspectController;
 use App\Modules\CRM\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,18 @@ Route::middleware('core.auth')->group(function () {
         Route::post('/{id}/convert-invoice', [QuoteController::class, 'convertToInvoice']);
     });
 
-    // TODO: invoices, chantiers, company_settings
+    // --- CRM : Factures (Invoices) ---
+    Route::prefix('batiment/invoices')->group(function () {
+        Route::get('/', [InvoiceController::class, 'index']);
+        Route::post('/', [InvoiceController::class, 'store']);
+        Route::get('/{id}', [InvoiceController::class, 'show']);
+        Route::put('/{id}', [InvoiceController::class, 'update']);
+        Route::delete('/{id}', [InvoiceController::class, 'destroy']);
+        Route::post('/{id}/send', [InvoiceController::class, 'send']);
+        Route::post('/{id}/mark-paid', [InvoiceController::class, 'markPaid']);
+        Route::post('/{id}/cancel', [InvoiceController::class, 'cancel']);
+    });
+
+    // TODO: chantiers, company_settings
 
 });
