@@ -205,40 +205,40 @@ chantier.pipeline_stage : planification | en_cours | reception | facture | clos
 
 ### Protégés (middleware `core.auth` — Bearer JWT du Core)
 ```
-GET    /api/batiment/prospects                      → Liste des prospects                                   → **(testé et validé Insomnia)**
-POST   /api/batiment/prospects                      → Créer un prospect                                     → **(testé et validé Insomnia)**
-GET    /api/batiment/prospects/{id}                 → Détail                                                → **(testé et validé Insomnia)**
-PUT    /api/batiment/prospects/{id}                 → Modifier                                              → **(testé et validé Insomnia)**
-DELETE /api/batiment/prospects/{id}                 → Supprimer                                             → **(testé et validé Insomnia)**
-POST   /api/batiment/prospects/{id}/convert-to-client → Convertir en client                                 → **(testé et validé Insomnia)**
+GET    /api/batiment/prospects                      → Liste des prospects                                               → **(testé et validé Insomnia)**
+POST   /api/batiment/prospects                      → Créer un prospect                                                 → **(testé et validé Insomnia)**
+GET    /api/batiment/prospects/{id}                 → Détail                                                            → **(testé et validé Insomnia)**
+PUT    /api/batiment/prospects/{id}                 → Modifier                                                          → **(testé et validé Insomnia)**
+DELETE /api/batiment/prospects/{id}                 → Supprimer                                                         → **(testé et validé Insomnia)**
+POST   /api/batiment/prospects/{id}/convert-to-client → Convertir en client                                             → **(testé et validé Insomnia)**
 
-GET    /api/batiment/clients                        → Liste des clients                                     → **(testé et validé Insomnia)**
-POST   /api/batiment/clients                        → Créer un client                                       → **(testé et validé Insomnia)**
-GET    /api/batiment/clients/{id}                   → Détail enrichi (+ quotes, invoices, chantiers, notes) → **(testé et validé Insomnia)**
-PUT    /api/batiment/clients/{id}                   → Modifier                                              → **(testé et validé Insomnia)**
-DELETE /api/batiment/clients/{id}                   → Supprimer                                             → **(testé et validé Insomnia)**
-POST   /api/batiment/clients/{id}/notes             → Ajouter une note                                      → **(testé et validé Insomnia)**
-POST   /api/batiment/clients/{id}/generate-portal-token → Générer un token d'accès client                   → **(testé et validé Insomnia)**
+GET    /api/batiment/clients                        → Liste des clients                                                 → **(testé et validé Insomnia)**
+POST   /api/batiment/clients                        → Créer un client                                                   → **(testé et validé Insomnia)**
+GET    /api/batiment/clients/{id}                   → Détail enrichi (+ quotes, invoices, chantiers, notes)             → **(testé et validé Insomnia)**
+PUT    /api/batiment/clients/{id}                   → Modifier                                                          → **(testé et validé Insomnia)**
+DELETE /api/batiment/clients/{id}                   → Supprimer                                                         → **(testé et validé Insomnia)**
+POST   /api/batiment/clients/{id}/notes             → Ajouter une note                                                  → **(testé et validé Insomnia)**
+POST   /api/batiment/clients/{id}/generate-portal-token → Générer un token d'accès client                               → **(testé et validé Insomnia)**
 
-GET    /api/batiment/quotes                        → Liste des devis (?status=, ?client_id=)                → **(testé et validé Insomnia)**
-POST   /api/batiment/quotes                        → Créer un devis (calcul auto des totaux)                → **(testé et validé Insomnia)**
-GET    /api/batiment/quotes/{id}                   → Détail                                                 → **(testé et validé Insomnia)**
-PUT    /api/batiment/quotes/{id}                   → Modifier (bloqué si accepted/invoiced)                 → **(testé et validé Insomnia)**
-DELETE /api/batiment/quotes/{id}                   → Supprimer (bloqué si accepted/invoiced)                → **(testé et validé Insomnia)**
-POST   /api/batiment/quotes/{id}/send              → Marquer envoyé                                         → **(testé et validé Insomnia)**
-POST   /api/batiment/quotes/{id}/sign              → Signer (accepter)                                      → **(testé et validé Insomnia)**
+GET    /api/batiment/quotes                        → Liste des devis (?status=, ?client_id=)                            → **(testé et validé Insomnia)**
+POST   /api/batiment/quotes                        → Créer un devis (calcul auto des totaux)                            → **(testé et validé Insomnia)**
+GET    /api/batiment/quotes/{id}                   → Détail                                                             → **(testé et validé Insomnia)**
+PUT    /api/batiment/quotes/{id}                   → Modifier (bloqué si accepted/invoiced)                             → **(testé et validé Insomnia)**
+DELETE /api/batiment/quotes/{id}                   → Supprimer (bloqué si accepted/invoiced)                            → **(testé et validé Insomnia)**
+POST   /api/batiment/quotes/{id}/send              → Marquer envoyé                                                     → **(testé et validé Insomnia)**
+POST   /api/batiment/quotes/{id}/sign              → Signer (accepter)                                                  → **(testé et validé Insomnia)**
                                                     Body requis : { signature_image: "data:image/png;base64,...", signed_by: "Nom", signed_at: "YYYY-MM-DD" }
-POST   /api/batiment/quotes/{id}/duplicate         → Dupliquer en brouillon                                 → **(testé et validé Insomnia)**
-POST   /api/batiment/quotes/{id}/convert-invoice   → Convertir en facture                                   → **(testé et validé Insomnia)**
+POST   /api/batiment/quotes/{id}/duplicate         → Dupliquer en brouillon                                             → **(testé et validé Insomnia)**
+POST   /api/batiment/quotes/{id}/convert-invoice   → Convertir en facture                                               → **(testé et validé Insomnia)**
 
-GET    /api/batiment/invoices                      → Liste des factures (?status=, ?client_id=)
-POST   /api/batiment/invoices                      → Créer une facture (calcul auto des totaux)
-GET    /api/batiment/invoices/{id}                 → Détail (+ quote liée)
-PUT    /api/batiment/invoices/{id}                 → Modifier (bloqué si pas draft)
-DELETE /api/batiment/invoices/{id}                 → Supprimer (bloqué si paid/partial)
-POST   /api/batiment/invoices/{id}/send            → Marquer envoyée
-POST   /api/batiment/invoices/{id}/mark-paid       → Marquer payée (met à jour amount_paid/due + client revenue)
-POST   /api/batiment/invoices/{id}/cancel          → Annuler (bloqué si paid)
+GET    /api/batiment/invoices                      → Liste des factures (?status=, ?client_id=)                         → **(testé et validé Insomnia)**
+POST   /api/batiment/invoices                      → Créer une facture (calcul auto des totaux)                         → **(testé et validé Insomnia)**
+GET    /api/batiment/invoices/{id}                 → Détail (+ quote liée)                                              → **(testé et validé Insomnia)**
+PUT    /api/batiment/invoices/{id}                 → Modifier (bloqué si pas draft)                                     → **(testé et validé Insomnia)**
+DELETE /api/batiment/invoices/{id}                 → Supprimer (bloqué si paid/partial)                                 → **(testé et validé Insomnia)**
+POST   /api/batiment/invoices/{id}/send            → Marquer envoyée                                                    → **(testé et validé Insomnia)**
+POST   /api/batiment/invoices/{id}/mark-paid       → Marquer payée (met à jour amount_paid/due + client revenue)        → **(testé et validé Insomnia)**
+POST   /api/batiment/invoices/{id}/cancel          → Annuler (bloqué si paid)                                           → **(testé et validé Insomnia)**
 ```
 
 ---
@@ -252,7 +252,7 @@ POST   /api/batiment/invoices/{id}/cancel          → Annuler (bloqué si paid)
 - Module CRM `Prospects` : CRUD complet + `POST /{id}/convert-to-client` *(testé et validé Insomnia)*
 - Module CRM `Clients` : CRUD + notes + portal token + conversion depuis prospect + compteurs stats *(testé et validé Insomnia)*
 - Module CRM `Quotes` : CRUD + calcul auto totaux + send + sign + duplicate + convert-to-invoice *(testé et validé Insomnia)*
-- Module CRM `Invoices` : CRUD + send + mark-paid + cancel + client denormalization + auto totaux
+- Module CRM `Invoices` : CRUD + send + mark-paid + cancel + client denormalization + auto totaux *(testé et validé Insomnia)*
 
 ### 🔄 À faire (CRM)
 - Module `Chantiers` → CRUD + pipeline + géolocalisation + assigned_workers
