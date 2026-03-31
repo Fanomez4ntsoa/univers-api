@@ -219,6 +219,16 @@ PUT    /api/batiment/clients/{id}                   → Modifier
 DELETE /api/batiment/clients/{id}                   → Supprimer
 POST   /api/batiment/clients/{id}/notes             → Ajouter une note
 POST   /api/batiment/clients/{id}/generate-portal-token → Générer un token d'accès client
+
+GET    /api/batiment/quotes                        → Liste des devis (?status=, ?client_id=)
+POST   /api/batiment/quotes                        → Créer un devis (calcul auto des totaux)
+GET    /api/batiment/quotes/{id}                   → Détail
+PUT    /api/batiment/quotes/{id}                   → Modifier (bloqué si accepted/invoiced)
+DELETE /api/batiment/quotes/{id}                   → Supprimer (bloqué si accepted/invoiced)
+POST   /api/batiment/quotes/{id}/send              → Marquer envoyé
+POST   /api/batiment/quotes/{id}/sign              → Signer (accepter)
+POST   /api/batiment/quotes/{id}/duplicate         → Dupliquer en brouillon
+POST   /api/batiment/quotes/{id}/convert-invoice   → Convertir en facture
 ```
 
 ---
@@ -231,9 +241,9 @@ POST   /api/batiment/clients/{id}/generate-portal-token → Générer un token d
 - Migrations CRM : prospects, clients, quotes, invoices, chantiers, company_settings, client_notes
 - Module CRM `Prospects` : CRUD complet + `POST /{id}/convert-to-client`
 - Module CRM `Clients` : CRUD + notes + portal token + conversion depuis prospect + compteurs stats
+- Module CRM `Quotes` : CRUD + calcul auto totaux + send + sign + duplicate + convert-to-invoice
 
 ### 🔄 À faire (CRM)
-- Module `Quotes` → CRUD + envoi + signature + calcul automatique
 - Module `Invoices` → CRUD + marquage payé + génération PDF
 - Module `Chantiers` → CRUD + pipeline + géolocalisation + assigned_workers
 - Module `CompanySettings` → GET + PUT (un enregistrement par artisan)
@@ -289,16 +299,6 @@ CACHE_STORE=file
 
 ---
 
-## 📂 Projets locaux
-
-| Projet | Chemin | Rôle |
-|--------|--------|------|
-| `abracadaworld-core` | `~/project/abracadaworld-core/` | Core Laravel — auth centrale — port 8000 |
-| `abracadabativ2`     | `~/project/abracadabativ2/`     | Univers Bati Laravel — port 8001 |
-| `AbracadaBati`       | `~/project/AbracadaBati/`       | Référence Emergent (FastAPI + React) |
-
----
-
 ## 🌿 Git Workflow — Règles obligatoires
 
 ### Branche principale
@@ -335,5 +335,17 @@ git commit -m "[FEAT]: description claire"
 - En cas de conflit : **signaler + expliquer + proposer la résolution**
 - **Fanomezantsoa valide** la résolution avant que Claude applique quoi que ce soit
 
-*Dernière mise à jour : 31 Mars 2026 — Module Clients terminé (CRUD + notes + portal token + conversion)*
+---
+
+## 📂 Projets locaux
+
+| Projet | Chemin | Rôle |
+|--------|--------|------|
+| `abracadaworld-core` | `~/project/abracadaworld-core/` | Core Laravel — auth centrale — port 8000 |
+| `abracadabativ2`     | `~/project/abracadabativ2/`     | Univers Bati Laravel — port 8001 |
+| `AbracadaBati`       | `~/project/AbracadaBati/`       | Référence Emergent (FastAPI + React) |
+
+---
+
+*Dernière mise à jour : 31 Mars 2026 — Module Quotes terminé (CRUD + calculs + send + sign + duplicate + convert)*
 *Rédigé par : Fanomezantsoa + Claude*

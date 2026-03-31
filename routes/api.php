@@ -2,6 +2,7 @@
 
 use App\Modules\CRM\Controllers\ClientController;
 use App\Modules\CRM\Controllers\ProspectController;
+use App\Modules\CRM\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,19 @@ Route::middleware('core.auth')->group(function () {
         Route::post('/{id}/generate-portal-token', [ClientController::class, 'generatePortalToken']);
     });
 
-    // TODO: quotes, invoices, chantiers, company_settings
+    // --- CRM : Devis (Quotes) ---
+    Route::prefix('batiment/quotes')->group(function () {
+        Route::get('/', [QuoteController::class, 'index']);
+        Route::post('/', [QuoteController::class, 'store']);
+        Route::get('/{id}', [QuoteController::class, 'show']);
+        Route::put('/{id}', [QuoteController::class, 'update']);
+        Route::delete('/{id}', [QuoteController::class, 'destroy']);
+        Route::post('/{id}/send', [QuoteController::class, 'send']);
+        Route::post('/{id}/sign', [QuoteController::class, 'sign']);
+        Route::post('/{id}/duplicate', [QuoteController::class, 'duplicate']);
+        Route::post('/{id}/convert-invoice', [QuoteController::class, 'convertToInvoice']);
+    });
+
+    // TODO: invoices, chantiers, company_settings
 
 });

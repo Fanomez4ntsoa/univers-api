@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable([
     'owner_id',
     'client_id',
     'quote_number',
+    'title',
     'chantier_type',
     'chantier_address',
     'work_description',
@@ -21,10 +21,24 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
     'tax_rate',
     'tax_amount',
     'total',
+    'global_discount_percent',
+    'global_discount_amount',
     'status',
+    'valid_until',
+    'validity_days',
+    'payment_terms',
+    'payment_delay_days',
+    'notes',
+    'internal_notes',
+    'terms_and_conditions',
     'signed',
     'signature_url',
-    'valid_until',
+    'signed_by',
+    'signed_at',
+    'signed_ip',
+    'sent_at',
+    'viewed_at',
+    'invoice_id',
 ])]
 class Quote extends Model
 {
@@ -33,14 +47,36 @@ class Quote extends Model
     protected function casts(): array
     {
         return [
-            'items'       => 'array',
-            'subtotal'    => 'decimal:2',
-            'tax_rate'    => 'decimal:2',
-            'tax_amount'  => 'decimal:2',
-            'total'       => 'decimal:2',
-            'signed'      => 'boolean',
-            'valid_until' => 'date',
+            'items'                    => 'array',
+            'subtotal'                 => 'decimal:2',
+            'tax_rate'                 => 'decimal:2',
+            'tax_amount'               => 'decimal:2',
+            'total'                    => 'decimal:2',
+            'global_discount_percent'  => 'decimal:2',
+            'global_discount_amount'   => 'decimal:2',
+            'signed'                   => 'boolean',
+            'valid_until'              => 'date',
+            'validity_days'            => 'integer',
+            'payment_delay_days'       => 'integer',
+            'signed_at'               => 'datetime',
+            'sent_at'                 => 'datetime',
+            'viewed_at'               => 'datetime',
         ];
+    }
+
+    public function isEditable(): bool
+    {
+        return in_array($this->status, ['draft', 'sent', 'viewed']);
+    }
+
+    public function isSignable(): bool
+    {
+        return in_array($this->status, ['sent', 'viewed']) && !$this->signed;
+    }
+
+    public function isConvertibleToInvoice(): bool
+    {
+        return $this->status === 'accepted' && $this->invoice_id === null;
     }
 
     public function owner(): BelongsTo
@@ -53,8 +89,8 @@ class Quote extends Model
         return $this->belongsTo(Client::class);
     }
 
-    public function invoice(): HasOne
+    public function invoice(): BelongsTo
     {
-        return $this->hasOne(Invoice::class);
+        return $this->belongsTo(Invoice::class);
     }
 }
