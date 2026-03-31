@@ -322,7 +322,7 @@ git checkout main && git pull
 git checkout -b feature/nom-du-module
 
 # 3. Développer + committer au fil de l'eau
-git commit -m "feat: description claire"
+git commit -m "[FEAT]: description claire"
 
 # 4. Tests validés sur la branche
 # 5. Soumettre pour validation (Fanomezantsoa valide)
