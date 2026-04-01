@@ -7,6 +7,7 @@ use App\Modules\Ecosystem\Controllers\JobController;
 use App\Modules\Ecosystem\Controllers\ListingController;
 use App\Modules\Ecosystem\Controllers\PostController;
 use App\Modules\Ecosystem\Controllers\ShopController;
+use App\Modules\Ecosystem\Controllers\SocialController;
 use App\Modules\CRM\Controllers\ClientController;
 use App\Modules\CRM\Controllers\CompanySettingController;
 use App\Modules\CRM\Controllers\InvoiceController;
@@ -144,6 +145,15 @@ Route::middleware('core.auth')->group(function () {
         Route::delete('/{id}', [EventController::class, 'destroy']);
         Route::post('/{id}/attend', [EventController::class, 'toggleAttend']);
     });
+
+    // --- Ecosystem : Réseau Social (profils + follow + feed) ---
+    Route::get('ecosystem/users', [SocialController::class, 'discoverUsers']);
+    Route::get('ecosystem/users/{id}', [SocialController::class, 'showProfile']);
+    Route::post('ecosystem/users/{id}/follow', [SocialController::class, 'toggleFollow']);
+    Route::get('ecosystem/users/{id}/followers', [SocialController::class, 'followers']);
+    Route::get('ecosystem/users/{id}/following', [SocialController::class, 'following']);
+    Route::get('ecosystem/feed', [SocialController::class, 'personalizedFeed']);
+    Route::get('ecosystem/profile', [SocialController::class, 'myProfile']);
 
 });
 

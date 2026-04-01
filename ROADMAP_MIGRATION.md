@@ -10,7 +10,7 @@
 ```
 Phase 1 CRM █████████████████████ 100% — COMPLÈTE ✅
 Phase 2     █████████████████████ 100% — COMPLÈTE ✅
-Phase 3     ████████████████░░░░░  80% — Jobs & Events en cours
+Phase 3     ████████████████████░  95% — Social en cours
 Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0% — pas encore commencé
 ```
 
@@ -50,7 +50,7 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 | Shops (boutique artisan) | `cockpit_boutique_routes.py` + `seller_routes.py` | `main` | ✅ Terminé + testé |
 | Listings / Petites annonces | `ecosystem_routes.py` | `main` | ✅ Terminé + testé |
 | Jobs & Events | `job_alerts_routes.py` + `test_jobs_events.py` | `main` | ✅ Terminé + testé |
-| Réseau social (profils, follow) | `social_media_routes.py` | | 📋 À faire |
+| Réseau social (profils, follow) | `social_media_routes.py` | `feature/ecosystem-social` | 🔄 En cours |
 
 ### Branches prévues :
 - `feature/ecosystem-posts`
@@ -111,5 +111,5 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 3 en cours — Jobs & Events terminé*
+*Dernière mise à jour : 2 Avril 2026 — Phase 3 en cours — Social en cours*
 *Rédigé par : Fanomezantsoa + Claude*

@@ -292,6 +292,9 @@ GET    /api/portal/{token}/invoices/{id}  → Détail d'une facture             
 - Module Ecosystem `Listings` : annonces CRUD + mark-sold + consultation publique filtrable + expiration 30j + views_count
 - Module Ecosystem `Jobs` : offres CRUD + postuler (bloqué si déjà candidat) + candidatures (owner only) + expiration 60j
 - Module Ecosystem `Events` : événements CRUD + toggle inscription (bloqué si complet) + attendees_count auto
+- Module Ecosystem `Social` : discover users + profil public + follow/unfollow toggle + followers/following + feed personnalisé + mon profil
+
+### 📋 À faire (Phase 4+)
 - Module matching : `project_requests` → artisans
 - Vérification du rôle `universe_slug = bati` sur le Core
 
@@ -412,5 +415,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 3 Ecosystem Jobs & Events en cours*
+*Dernière mise à jour : 2 Avril 2026 — Phase 3 Ecosystem Social en cours*
 *Rédigé par : Fanomezantsoa + Claude*

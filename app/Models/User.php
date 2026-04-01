@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -26,6 +27,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
     'is_verified',
     'is_active',
     'has_pro_subscription',
+    'followers_count',
+    'following_count',
+    'posts_count',
     'last_synced_at',
 ])]
 class User extends Model
@@ -55,5 +59,20 @@ class User extends Model
     public function companySetting(): HasOne
     {
         return $this->hasOne(CompanySetting::class);
+    }
+
+    public function followers(): HasMany
+    {
+        return $this->hasMany(UserFollow::class, 'following_id');
+    }
+
+    public function followings(): HasMany
+    {
+        return $this->hasMany(UserFollow::class, 'follower_id');
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
     }
 }
