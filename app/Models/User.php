@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable([
@@ -49,5 +50,10 @@ class User extends Model
     public function isParticulier(): bool
     {
         return $this->user_type === 'particulier';
+    }
+
+    public function companySetting(): HasOne
+    {
+        return $this->hasOne(CompanySetting::class);
     }
 }

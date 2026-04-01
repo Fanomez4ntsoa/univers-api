@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\ClientPortal\Controllers\ClientPortalController;
 use App\Modules\CRM\Controllers\ChantierController;
 use App\Modules\CRM\Controllers\ClientController;
 use App\Modules\CRM\Controllers\CompanySettingController;
@@ -87,4 +88,20 @@ Route::middleware('core.auth')->group(function () {
         Route::put('/company', [CompanySettingController::class, 'update']);
     });
 
+});
+
+/*
+|--------------------------------------------------------------------------
+| Client Portal — Routes publiques (sans auth Core)
+|--------------------------------------------------------------------------
+| Accès via portal_token généré par POST /api/batiment/clients/{id}/generate-portal-token
+*/
+
+Route::prefix('portal/{token}')->group(function () {
+    Route::get('/', [ClientPortalController::class, 'dashboard']);
+    Route::get('/quotes', [ClientPortalController::class, 'listQuotes']);
+    Route::get('/quotes/{id}', [ClientPortalController::class, 'showQuote']);
+    Route::post('/quotes/{id}/sign', [ClientPortalController::class, 'signQuote']);
+    Route::get('/invoices', [ClientPortalController::class, 'listInvoices']);
+    Route::get('/invoices/{id}', [ClientPortalController::class, 'showInvoice']);
 });

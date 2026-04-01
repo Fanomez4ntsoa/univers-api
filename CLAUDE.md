@@ -260,6 +260,16 @@ GET    /api/batiment/settings/company               → Paramètres entreprise (
 PUT    /api/batiment/settings/company               → Mettre à jour (quote_counter/invoice_counter non modifiables)     → **(testé et validé Insomnia)**
 ```
 
+### Publics — Client Portal (sans auth Core, accès par portal_token)
+```
+GET    /api/portal/{token}                → Dashboard client (info + quotes + invoices + chantiers)
+GET    /api/portal/{token}/quotes         → Liste des devis (hors drafts)
+GET    /api/portal/{token}/quotes/{id}    → Détail devis + CGV artisan (auto sent→viewed)
+POST   /api/portal/{token}/quotes/{id}/sign → Signer un devis côté client
+GET    /api/portal/{token}/invoices       → Liste des factures (hors drafts)
+GET    /api/portal/{token}/invoices/{id}  → Détail d'une facture
+```
+
 ---
 
 ## 📁 Modules — État d'avancement
@@ -274,8 +284,7 @@ PUT    /api/batiment/settings/company               → Mettre à jour (quote_co
 - Module CRM `Invoices` : CRUD + send + mark-paid + cancel + client denormalization + auto totaux *(testé et validé Insomnia)*
 - Module CRM `Chantiers` : CRUD + pipeline + move-stage + documents + comments + time-entries + costs + rentabilité auto *(testé et validé Insomnia)*
 - Module CRM `CompanySettings` : GET (auto-create) + PUT (counters protégés)
-
-### 📋 Plus tard (Phase 2+)
+- Module `ClientPortal` : dashboard + quotes + invoices + signature devis (routes publiques sans auth Core)
 - Ecosystem social : posts, shops, listings, jobs, events
 - Module matching : `project_requests` → artisans
 - Vérification du rôle `universe_slug = bati` sur le Core
@@ -397,5 +406,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 31 Mars 2026 — Module Chantiers terminé (CRUD + pipeline + documents + time + costs + rentabilité)*
+*Dernière mise à jour : 1 Avril 2026 — Phase 2 Client Portal en cours*
 *Rédigé par : Fanomezantsoa + Claude*
