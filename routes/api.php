@@ -2,6 +2,8 @@
 
 use App\Modules\ClientPortal\Controllers\ClientPortalController;
 use App\Modules\CRM\Controllers\ChantierController;
+use App\Modules\Ecosystem\Controllers\EventController;
+use App\Modules\Ecosystem\Controllers\JobController;
 use App\Modules\Ecosystem\Controllers\ListingController;
 use App\Modules\Ecosystem\Controllers\PostController;
 use App\Modules\Ecosystem\Controllers\ShopController;
@@ -120,6 +122,27 @@ Route::middleware('core.auth')->group(function () {
         Route::put('/{id}', [ListingController::class, 'update']);
         Route::delete('/{id}', [ListingController::class, 'destroy']);
         Route::post('/{id}/sold', [ListingController::class, 'markSold']);
+    });
+
+    // --- Ecosystem : Jobs ---
+    Route::prefix('ecosystem/jobs')->group(function () {
+        Route::get('/', [JobController::class, 'index']);
+        Route::post('/', [JobController::class, 'store']);
+        Route::get('/{id}', [JobController::class, 'show']);
+        Route::put('/{id}', [JobController::class, 'update']);
+        Route::delete('/{id}', [JobController::class, 'destroy']);
+        Route::post('/{id}/apply', [JobController::class, 'apply']);
+        Route::get('/{id}/applications', [JobController::class, 'applications']);
+    });
+
+    // --- Ecosystem : Events ---
+    Route::prefix('ecosystem/events')->group(function () {
+        Route::get('/', [EventController::class, 'index']);
+        Route::post('/', [EventController::class, 'store']);
+        Route::get('/{id}', [EventController::class, 'show']);
+        Route::put('/{id}', [EventController::class, 'update']);
+        Route::delete('/{id}', [EventController::class, 'destroy']);
+        Route::post('/{id}/attend', [EventController::class, 'toggleAttend']);
     });
 
 });
