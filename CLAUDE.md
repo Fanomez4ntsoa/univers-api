@@ -270,6 +270,58 @@ GET    /api/portal/{token}/invoices       → Liste des factures (hors drafts)  
 GET    /api/portal/{token}/invoices/{id}  → Détail d'une facture                                                        → **(testé et validé Insomnia)**
 ```
 
+### Ecosystem Social (Phase 3 — middleware `core.auth`)
+```
+GET    /api/ecosystem/posts                        → Feed paginé (15/page)                                                → **(testé et validé Insomnia)**
+POST   /api/ecosystem/posts                        → Créer un post                                                        → **(testé et validé Insomnia)**
+GET    /api/ecosystem/posts/{id}                   → Détail post                                                          → **(testé et validé Insomnia)**
+PUT    /api/ecosystem/posts/{id}                   → Modifier (son post)                                                  → **(testé et validé Insomnia)**
+DELETE /api/ecosystem/posts/{id}                   → Supprimer (son post)                                                 → **(testé et validé Insomnia)**
+POST   /api/ecosystem/posts/{id}/like              → Like/Unlike toggle                                                   → **(testé et validé Insomnia)**
+POST   /api/ecosystem/posts/{id}/comments          → Ajouter un commentaire                                               → **(testé et validé Insomnia)**
+GET    /api/ecosystem/posts/{id}/comments          → Liste des commentaires                                               → **(testé et validé Insomnia)**
+
+GET    /api/ecosystem/shop                         → Ma boutique (auto-créée)                                             → **(testé et validé Insomnia)**
+PUT    /api/ecosystem/shop                         → Mettre à jour ma boutique                                            → **(testé et validé Insomnia)**
+GET    /api/ecosystem/shop/products                → Mes produits                                                         → **(testé et validé Insomnia)**
+POST   /api/ecosystem/shop/products                → Ajouter un produit                                                   → **(testé et validé Insomnia)**
+PUT    /api/ecosystem/shop/products/{id}           → Modifier un produit                                                  → **(testé et validé Insomnia)**
+DELETE /api/ecosystem/shop/products/{id}           → Supprimer un produit                                                 → **(testé et validé Insomnia)**
+GET    /api/ecosystem/shops                        → Boutiques actives (public)                                           → **(testé et validé Insomnia)**
+GET    /api/ecosystem/shops/{slug}                 → Détail boutique + produits (public)                                  → **(testé et validé Insomnia)**
+
+GET    /api/ecosystem/listings/my                  → Mes annonces                                                         → **(testé et validé Insomnia)**
+POST   /api/ecosystem/listings                     → Créer une annonce                                                    → **(testé et validé Insomnia)**
+PUT    /api/ecosystem/listings/{id}                → Modifier (la sienne)                                                 → **(testé et validé Insomnia)**
+DELETE /api/ecosystem/listings/{id}                → Supprimer (la sienne)                                                → **(testé et validé Insomnia)**
+POST   /api/ecosystem/listings/{id}/sold           → Marquer vendu                                                        → **(testé et validé Insomnia)**
+GET    /api/ecosystem/listings                     → Annonces actives (public, ?category=, ?city=, ?price_type=)          → **(testé et validé Insomnia)**
+GET    /api/ecosystem/listings/{id}                → Détail annonce (public, incrémente views_count)                      → **(testé et validé Insomnia)**
+
+GET    /api/ecosystem/jobs                         → Offres actives (?category=, ?city=, ?contract_type=)                 → **(testé et validé Insomnia)**
+POST   /api/ecosystem/jobs                         → Publier une offre                                                    → **(testé et validé Insomnia)**
+GET    /api/ecosystem/jobs/{id}                    → Détail offre                                                         → **(testé et validé Insomnia)**
+PUT    /api/ecosystem/jobs/{id}                    → Modifier (la sienne)                                                 → **(testé et validé Insomnia)**
+DELETE /api/ecosystem/jobs/{id}                    → Supprimer (la sienne)                                                → **(testé et validé Insomnia)**
+POST   /api/ecosystem/jobs/{id}/apply              → Postuler                                                             → **(testé et validé Insomnia)**
+GET    /api/ecosystem/jobs/{id}/applications       → Candidatures (owner)                                                 → **(testé et validé Insomnia)**
+
+GET    /api/ecosystem/events                       → Liste événements (?event_type=, ?city=)                              → **(testé et validé Insomnia)**
+POST   /api/ecosystem/events                       → Créer un événement                                                   → **(testé et validé Insomnia)**
+GET    /api/ecosystem/events/{id}                  → Détail événement                                                     → **(testé et validé Insomnia)**
+PUT    /api/ecosystem/events/{id}                  → Modifier (le sien)                                                   → **(testé et validé Insomnia)**
+DELETE /api/ecosystem/events/{id}                  → Supprimer (le sien)                                                  → **(testé et validé Insomnia)**
+POST   /api/ecosystem/events/{id}/attend           → S'inscrire/Se désinscrire toggle                                    → **(testé et validé Insomnia)**
+
+GET    /api/ecosystem/users                        → Découvrir les artisans (20/page + is_following)                      → **(testé et validé Insomnia)**
+GET    /api/ecosystem/users/{id}                   → Profil public + 5 derniers posts                                    → **(testé et validé Insomnia)**
+POST   /api/ecosystem/users/{id}/follow            → Follow/Unfollow toggle                                               → **(testé et validé Insomnia)**
+GET    /api/ecosystem/users/{id}/followers         → Liste des followers                                                  → **(testé et validé Insomnia)**
+GET    /api/ecosystem/users/{id}/following         → Liste des abonnements                                                → **(testé et validé Insomnia)**
+GET    /api/ecosystem/feed                         → Feed personnalisé (posts des suivis, 15/page)                        → **(testé et validé Insomnia)**
+GET    /api/ecosystem/profile                      → Mon profil avec stats                                                → **(testé et validé Insomnia)**
+```
+
 ---
 
 ## 📁 Modules — État d'avancement
@@ -283,16 +335,15 @@ GET    /api/portal/{token}/invoices/{id}  → Détail d'une facture             
 - Module CRM `Quotes` : CRUD + calcul auto totaux + send + sign + duplicate + convert-to-invoice *(testé et validé Insomnia)*
 - Module CRM `Invoices` : CRUD + send + mark-paid + cancel + client denormalization + auto totaux *(testé et validé Insomnia)*
 - Module CRM `Chantiers` : CRUD + pipeline + move-stage + documents + comments + time-entries + costs + rentabilité auto *(testé et validé Insomnia)*
-- Module CRM `CompanySettings` : GET (auto-create) + PUT (counters protégés)
-- Module `ClientPortal` : dashboard + quotes + invoices + signature devis (routes publiques sans auth Core)
+- Module CRM `CompanySettings` : GET (auto-create) + PUT (counters protégés) *(testé et validé Insomnia)*
+- Module `ClientPortal` : dashboard + quotes + invoices + signature devis (routes publiques sans auth Core) *(testé et validé Insomnia)*
 
-### 🔄 En cours (Phase 3)
-- Module Ecosystem `Posts/Feed` : CRUD + feed paginé + like toggle + comments
-- Module Ecosystem `Shops` : gestion boutique (auto-create) + produits CRUD + consultation publique par slug
-- Module Ecosystem `Listings` : annonces CRUD + mark-sold + consultation publique filtrable + expiration 30j + views_count
-- Module Ecosystem `Jobs` : offres CRUD + postuler (bloqué si déjà candidat) + candidatures (owner only) + expiration 60j
-- Module Ecosystem `Events` : événements CRUD + toggle inscription (bloqué si complet) + attendees_count auto
-- Module Ecosystem `Social` : discover users + profil public + follow/unfollow toggle + followers/following + feed personnalisé + mon profil
+- Module Ecosystem `Posts/Feed` : CRUD + feed paginé + like toggle + comments *(testé et validé Insomnia)*
+- Module Ecosystem `Shops` : gestion boutique (auto-create) + produits CRUD + consultation publique par slug *(testé et validé Insomnia)*
+- Module Ecosystem `Listings` : annonces CRUD + mark-sold + consultation publique filtrable + expiration 30j + views_count *(testé et validé Insomnia)*
+- Module Ecosystem `Jobs` : offres CRUD + postuler (bloqué si déjà candidat) + candidatures (owner only) + expiration 60j *(testé et validé Insomnia)*
+- Module Ecosystem `Events` : événements CRUD + toggle inscription (bloqué si complet) + attendees_count auto *(testé et validé Insomnia)*
+- Module Ecosystem `Social` : discover users + profil public + follow/unfollow toggle + followers/following + feed personnalisé + mon profil *(testé et validé Insomnia)*
 
 ### 📋 À faire (Phase 4+)
 - Module matching : `project_requests` → artisans
@@ -415,5 +466,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 3 Ecosystem Social en cours*
+*Dernière mise à jour : 2 Avril 2026 — Phase 3 Ecosystem 100% terminée*
 *Rédigé par : Fanomezantsoa + Claude*
