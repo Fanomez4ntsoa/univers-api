@@ -9,7 +9,7 @@
 ## 📍 Position actuelle
 ```
 Phase 1 CRM █████████████████████ 100% — COMPLÈTE ✅
-Phase 2     ████████░░░░░░░░░░░░░  33% — Client Portal en cours
+Phase 2     █████████████████████ 100% — COMPLÈTE ✅
 Phase 3-5   ░░░░░░░░░░░░░░░░░░░░░   0% — pas encore commencé
 ```
 
@@ -29,15 +29,13 @@ Phase 3-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-## 🔄 PHASE 2 — Client Portal
-
-> **Débloquée** : Phase 1 complète ✅
+## ✅ PHASE 2 — Client Portal
 
 | Module | Fichiers Emergent de référence | Branche | État |
 |---|---|---|---|
-| Accès portal client (token) | `client_portal_routes.py` + `client_portal_models.py` | `feature/client-portal` | 🔄 En cours |
-| Signature devis côté client | `client_portal_devis_routes.py` + `test_client_portal_devis.py` | `feature/client-portal` | 🔄 En cours |
-| Vue publique devis/facture | `public/PublicQuoteSignPage.jsx` (front référence) | `feature/client-portal` | 🔄 En cours |
+| Accès portal client (token) | `client_portal_routes.py` + `client_portal_models.py` | `main` | ✅ Terminé + testé |
+| Signature devis côté client | `client_portal_devis_routes.py` + `test_client_portal_devis.py` | `main` | ✅ Terminé + testé |
+| Vue publique devis/facture | `public/PublicQuoteSignPage.jsx` (front référence) | `main` | ✅ Terminé + testé |
 
 ---
 
@@ -112,5 +110,5 @@ Phase 3-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 1 Avril 2026 — Phase 2 démarrée — Client Portal en cours*
+*Dernière mise à jour : 1 Avril 2026 — Phase 2 Client Portal terminée*
 *Rédigé par : Fanomezantsoa + Claude*
