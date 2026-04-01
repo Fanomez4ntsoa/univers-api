@@ -48,7 +48,7 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 |---|---|---|---|
 | Posts / Feed | `ecosystem_routes.py` + `ecosystem_models.py` | `main` | ✅ Terminé + testé |
 | Shops (boutique artisan) | `cockpit_boutique_routes.py` + `seller_routes.py` | `main` | ✅ Terminé + testé |
-| Listings / Petites annonces | `ecosystem_routes.py` | `feature/ecosystem-listings` | 🔄 En cours |
+| Listings / Petites annonces | `ecosystem_routes.py` | `main` | ✅ Terminé + testé |
 | Jobs & Events | `job_alerts_routes.py` + `test_jobs_events.py` | | 📋 À faire |
 | Réseau social (profils, follow) | `social_media_routes.py` | | 📋 À faire |
 
@@ -111,5 +111,5 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 1 Avril 2026 — Phase 3 en cours — Listings en cours*
+*Dernière mise �� jour : 2 Avril 2026 — Phase 3 en cours — Listings terminé*
 *Rédigé par : Fanomezantsoa + Claude*
