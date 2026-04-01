@@ -262,12 +262,12 @@ PUT    /api/batiment/settings/company               → Mettre à jour (quote_co
 
 ### Publics — Client Portal (sans auth Core, accès par portal_token)
 ```
-GET    /api/portal/{token}                → Dashboard client (info + quotes + invoices + chantiers)
-GET    /api/portal/{token}/quotes         → Liste des devis (hors drafts)
-GET    /api/portal/{token}/quotes/{id}    → Détail devis + CGV artisan (auto sent→viewed)
-POST   /api/portal/{token}/quotes/{id}/sign → Signer un devis côté client
-GET    /api/portal/{token}/invoices       → Liste des factures (hors drafts)
-GET    /api/portal/{token}/invoices/{id}  → Détail d'une facture
+GET    /api/portal/{token}                → Dashboard client (info + quotes + invoices + chantiers)                     → **(testé et validé Insomnia)**
+GET    /api/portal/{token}/quotes         → Liste des devis (hors drafts)                                               → **(testé et validé Insomnia)**
+GET    /api/portal/{token}/quotes/{id}    → Détail devis + CGV artisan (auto sent→viewed)                               → **(testé et validé Insomnia)**
+POST   /api/portal/{token}/quotes/{id}/sign → Signer un devis côté client                                               → **(testé et validé Insomnia)**
+GET    /api/portal/{token}/invoices       → Liste des factures (hors drafts)                                            → **(testé et validé Insomnia)**
+GET    /api/portal/{token}/invoices/{id}  → Détail d'une facture                                                        → **(testé et validé Insomnia)**
 ```
 
 ---
