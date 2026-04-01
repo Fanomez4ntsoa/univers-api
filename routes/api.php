@@ -2,6 +2,7 @@
 
 use App\Modules\ClientPortal\Controllers\ClientPortalController;
 use App\Modules\CRM\Controllers\ChantierController;
+use App\Modules\Ecosystem\Controllers\ListingController;
 use App\Modules\Ecosystem\Controllers\PostController;
 use App\Modules\Ecosystem\Controllers\ShopController;
 use App\Modules\CRM\Controllers\ClientController;
@@ -112,6 +113,15 @@ Route::middleware('core.auth')->group(function () {
         Route::delete('/products/{id}', [ShopController::class, 'destroyProduct']);
     });
 
+    // --- Ecosystem : Mes Annonces (protégé) ---
+    Route::prefix('ecosystem/listings')->group(function () {
+        Route::get('/my', [ListingController::class, 'myListings']);
+        Route::post('/', [ListingController::class, 'store']);
+        Route::put('/{id}', [ListingController::class, 'update']);
+        Route::delete('/{id}', [ListingController::class, 'destroy']);
+        Route::post('/{id}/sold', [ListingController::class, 'markSold']);
+    });
+
 });
 
 /*
@@ -123,6 +133,17 @@ Route::middleware('core.auth')->group(function () {
 Route::prefix('ecosystem/shops')->group(function () {
     Route::get('/', [ShopController::class, 'listPublic']);
     Route::get('/{slug}', [ShopController::class, 'showPublic']);
+});
+
+/*
+|--------------------------------------------------------------------------
+| Annonces publiques (sans auth Core)
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('ecosystem/listings')->group(function () {
+    Route::get('/', [ListingController::class, 'listPublic']);
+    Route::get('/{id}', [ListingController::class, 'showPublic']);
 });
 
 /*
