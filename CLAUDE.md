@@ -286,8 +286,8 @@ GET    /api/portal/{token}/invoices/{id}  → Détail d'une facture             
 - Module CRM `CompanySettings` : GET (auto-create) + PUT (counters protégés)
 - Module `ClientPortal` : dashboard + quotes + invoices + signature devis (routes publiques sans auth Core)
 
-### 📋 À faire (Phase 3+)
-- Ecosystem social : posts, shops, listings, jobs, events
+### 🔄 En cours (Phase 3)
+- Module Ecosystem `Posts/Feed` : CRUD + feed paginé + like toggle + comments
 - Module matching : `project_requests` → artisans
 - Vérification du rôle `universe_slug = bati` sur le Core
 
@@ -408,5 +408,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 1 Avril 2026 — Phase 2 Client Portal en cours*
+*Dernière mise à jour : 1 Avril 2026 — Phase 3 Ecosystem Posts en cours*
 *Rédigé par : Fanomezantsoa + Claude*

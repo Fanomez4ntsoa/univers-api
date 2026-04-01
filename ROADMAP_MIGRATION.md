@@ -10,7 +10,8 @@
 ```
 Phase 1 CRM █████████████████████ 100% — COMPLÈTE ✅
 Phase 2     █████████████████████ 100% — COMPLÈTE ✅
-Phase 3-5   ░░░░░░░░░░░░░░░░░░░░░   0% — pas encore commencé
+Phase 3     ████░░░░░░░░░░░░░░░░░  20% — Posts/Feed en cours
+Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0% — pas encore commencé
 ```
 
 ---
@@ -39,13 +40,13 @@ Phase 3-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-## 📋 PHASE 3 — Ecosystem Social
+## 🔄 PHASE 3 — Ecosystem Social
 
-> **Débloquer après** : Phase 2 complète
+> **Débloquée** : Phase 2 complète ✅
 
-| Module | Fichiers Emergent de référence | État |
-|---|---|---|
-| Posts / Feed | `ecosystem_routes.py` + `ecosystem_models.py` | 📋 À faire |
+| Module | Fichiers Emergent de référence | Branche | État |
+|---|---|---|---|
+| Posts / Feed | `ecosystem_routes.py` + `ecosystem_models.py` | `feature/ecosystem-posts` | 🔄 En cours |
 | Shops (boutique artisan) | `cockpit_boutique_routes.py` + `seller_routes.py` | 📋 À faire |
 | Listings / Petites annonces | `ecosystem_routes.py` | 📋 À faire |
 | Jobs & Events | `job_alerts_routes.py` + `test_jobs_events.py` | 📋 À faire |
@@ -110,5 +111,5 @@ Phase 3-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 1 Avril 2026 — Phase 2 Client Portal terminée*
+*Dernière mise à jour : 1 Avril 2026 — Phase 3 démarrée — Posts/Feed en cours*
 *Rédigé par : Fanomezantsoa + Claude*

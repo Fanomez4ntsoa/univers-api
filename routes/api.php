@@ -2,6 +2,7 @@
 
 use App\Modules\ClientPortal\Controllers\ClientPortalController;
 use App\Modules\CRM\Controllers\ChantierController;
+use App\Modules\Ecosystem\Controllers\PostController;
 use App\Modules\CRM\Controllers\ClientController;
 use App\Modules\CRM\Controllers\CompanySettingController;
 use App\Modules\CRM\Controllers\InvoiceController;
@@ -86,6 +87,18 @@ Route::middleware('core.auth')->group(function () {
     Route::prefix('batiment/settings')->group(function () {
         Route::get('/company', [CompanySettingController::class, 'show']);
         Route::put('/company', [CompanySettingController::class, 'update']);
+    });
+
+    // --- Ecosystem : Posts / Feed ---
+    Route::prefix('ecosystem/posts')->group(function () {
+        Route::get('/', [PostController::class, 'index']);
+        Route::post('/', [PostController::class, 'store']);
+        Route::get('/{id}', [PostController::class, 'show']);
+        Route::put('/{id}', [PostController::class, 'update']);
+        Route::delete('/{id}', [PostController::class, 'destroy']);
+        Route::post('/{id}/like', [PostController::class, 'toggleLike']);
+        Route::post('/{id}/comments', [PostController::class, 'addComment']);
+        Route::get('/{id}/comments', [PostController::class, 'listComments']);
     });
 
 });
