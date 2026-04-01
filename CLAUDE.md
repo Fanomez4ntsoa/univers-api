@@ -288,6 +288,7 @@ GET    /api/portal/{token}/invoices/{id}  → Détail d'une facture             
 
 ### 🔄 En cours (Phase 3)
 - Module Ecosystem `Posts/Feed` : CRUD + feed paginé + like toggle + comments
+- Module Ecosystem `Shops` : gestion boutique (auto-create) + produits CRUD + consultation publique par slug
 - Module matching : `project_requests` → artisans
 - Vérification du rôle `universe_slug = bati` sur le Core
 
@@ -408,5 +409,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 1 Avril 2026 — Phase 3 Ecosystem Posts en cours*
+*Dernière mise à jour : 1 Avril 2026 — Phase 3 Ecosystem Shops en cours*
 *Rédigé par : Fanomezantsoa + Claude*

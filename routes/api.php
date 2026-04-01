@@ -3,6 +3,7 @@
 use App\Modules\ClientPortal\Controllers\ClientPortalController;
 use App\Modules\CRM\Controllers\ChantierController;
 use App\Modules\Ecosystem\Controllers\PostController;
+use App\Modules\Ecosystem\Controllers\ShopController;
 use App\Modules\CRM\Controllers\ClientController;
 use App\Modules\CRM\Controllers\CompanySettingController;
 use App\Modules\CRM\Controllers\InvoiceController;
@@ -101,6 +102,27 @@ Route::middleware('core.auth')->group(function () {
         Route::get('/{id}/comments', [PostController::class, 'listComments']);
     });
 
+    // --- Ecosystem : Ma Boutique (protégé) ---
+    Route::prefix('ecosystem/shop')->group(function () {
+        Route::get('/', [ShopController::class, 'showMine']);
+        Route::put('/', [ShopController::class, 'updateMine']);
+        Route::get('/products', [ShopController::class, 'listMyProducts']);
+        Route::post('/products', [ShopController::class, 'storeProduct']);
+        Route::put('/products/{id}', [ShopController::class, 'updateProduct']);
+        Route::delete('/products/{id}', [ShopController::class, 'destroyProduct']);
+    });
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Boutiques publiques (sans auth Core)
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('ecosystem/shops')->group(function () {
+    Route::get('/', [ShopController::class, 'listPublic']);
+    Route::get('/{slug}', [ShopController::class, 'showPublic']);
 });
 
 /*

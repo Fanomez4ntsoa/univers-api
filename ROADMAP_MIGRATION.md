@@ -10,7 +10,7 @@
 ```
 Phase 1 CRM █████████████████████ 100% — COMPLÈTE ✅
 Phase 2     █████████████████████ 100% — COMPLÈTE ✅
-Phase 3     ████░░░░░░░░░░░░░░░░░  20% — Posts/Feed en cours
+Phase 3     ████████░░░░░░░░░░░░░  40% — Shops en cours
 Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0% — pas encore commencé
 ```
 
@@ -47,7 +47,7 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 | Module | Fichiers Emergent de référence | Branche | État |
 |---|---|---|---|
 | Posts / Feed | `ecosystem_routes.py` + `ecosystem_models.py` | `main` | ✅ Terminé + testé |
-| Shops (boutique artisan) | `cockpit_boutique_routes.py` + `seller_routes.py` | | 📋 À faire |
+| Shops (boutique artisan) | `cockpit_boutique_routes.py` + `seller_routes.py` | `feature/ecosystem-shops` | 🔄 En cours |
 | Listings / Petites annonces | `ecosystem_routes.py` | | 📋 À faire |
 | Jobs & Events | `job_alerts_routes.py` + `test_jobs_events.py` | | 📋 À faire |
 | Réseau social (profils, follow) | `social_media_routes.py` | | 📋 À faire |
@@ -111,5 +111,5 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 1 Avril 2026 — Phase 3 en cours — Posts/Feed terminé*
+*Dernière mise à jour : 1 Avril 2026 — Phase 3 en cours — Shops en cours*
 *Rédigé par : Fanomezantsoa + Claude*
