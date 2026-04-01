@@ -49,7 +49,7 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 | Posts / Feed | `ecosystem_routes.py` + `ecosystem_models.py` | `main` | ✅ Terminé + testé |
 | Shops (boutique artisan) | `cockpit_boutique_routes.py` + `seller_routes.py` | `main` | ✅ Terminé + testé |
 | Listings / Petites annonces | `ecosystem_routes.py` | `main` | ✅ Terminé + testé |
-| Jobs & Events | `job_alerts_routes.py` + `test_jobs_events.py` | `feature/ecosystem-jobs-events` | 🔄 En cours |
+| Jobs & Events | `job_alerts_routes.py` + `test_jobs_events.py` | `main` | ✅ Terminé + testé |
 | Réseau social (profils, follow) | `social_media_routes.py` | | 📋 À faire |
 
 ### Branches prévues :
@@ -111,5 +111,5 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 3 en cours — Jobs & Events en cours*
+*Dernière mise à jour : 2 Avril 2026 — Phase 3 en cours — Jobs & Events terminé*
 *Rédigé par : Fanomezantsoa + Claude*
