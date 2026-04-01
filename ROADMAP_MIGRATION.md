@@ -47,7 +47,7 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 | Module | Fichiers Emergent de référence | Branche | État |
 |---|---|---|---|
 | Posts / Feed | `ecosystem_routes.py` + `ecosystem_models.py` | `main` | ✅ Terminé + testé |
-| Shops (boutique artisan) | `cockpit_boutique_routes.py` + `seller_routes.py` | `feature/ecosystem-shops` | 🔄 En cours |
+| Shops (boutique artisan) | `cockpit_boutique_routes.py` + `seller_routes.py` | `main` | ✅ Terminé + testé |
 | Listings / Petites annonces | `ecosystem_routes.py` | | 📋 À faire |
 | Jobs & Events | `job_alerts_routes.py` + `test_jobs_events.py` | | 📋 À faire |
 | Réseau social (profils, follow) | `social_media_routes.py` | | 📋 À faire |
@@ -111,5 +111,5 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 1 Avril 2026 — Phase 3 en cours — Shops en cours*
+*Dernière mise à jour : 1 Avril 2026 — Phase 3 en cours — Shops terminé*
 *Rédigé par : Fanomezantsoa + Claude*
