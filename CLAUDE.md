@@ -345,8 +345,10 @@ GET    /api/ecosystem/profile                      → Mon profil avec stats    
 - Module Ecosystem `Events` : événements CRUD + toggle inscription (bloqué si complet) + attendees_count auto *(testé et validé Insomnia)*
 - Module Ecosystem `Social` : discover users + profil public + follow/unfollow toggle + followers/following + feed personnalisé + mon profil *(testé et validé Insomnia)*
 
-### 📋 À faire (Phase 4+)
-- Module matching : `project_requests` → artisans
+### 🔄 En cours (Phase 4)
+- Module Matching : demandes de travaux + devis artisans + accept/refuse + available + my-quotes
+
+### 📋 À faire (Phase 5+)
 - Vérification du rôle `universe_slug = bati` sur le Core
 
 ---
@@ -466,5 +468,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 3 Ecosystem 100% terminée*
+*Dernière mise à jour : 2 Avril 2026 — Phase 4 Matching en cours*
 *Rédigé par : Fanomezantsoa + Claude*

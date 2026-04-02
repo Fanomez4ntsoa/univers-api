@@ -8,6 +8,7 @@ use App\Modules\Ecosystem\Controllers\ListingController;
 use App\Modules\Ecosystem\Controllers\PostController;
 use App\Modules\Ecosystem\Controllers\ShopController;
 use App\Modules\Ecosystem\Controllers\SocialController;
+use App\Modules\Matching\Controllers\MatchingController;
 use App\Modules\CRM\Controllers\ClientController;
 use App\Modules\CRM\Controllers\CompanySettingController;
 use App\Modules\CRM\Controllers\InvoiceController;
@@ -154,6 +155,22 @@ Route::middleware('core.auth')->group(function () {
     Route::get('ecosystem/users/{id}/following', [SocialController::class, 'following']);
     Route::get('ecosystem/feed', [SocialController::class, 'personalizedFeed']);
     Route::get('ecosystem/profile', [SocialController::class, 'myProfile']);
+
+    // --- Matching : Côté particulier (demandes) ---
+    Route::prefix('matching/requests')->group(function () {
+        Route::get('/', [MatchingController::class, 'myRequests']);
+        Route::post('/', [MatchingController::class, 'storeRequest']);
+        Route::get('/{id}', [MatchingController::class, 'showRequest']);
+        Route::put('/{id}', [MatchingController::class, 'updateRequest']);
+        Route::delete('/{id}', [MatchingController::class, 'destroyRequest']);
+        Route::post('/{id}/close', [MatchingController::class, 'closeRequest']);
+        Route::post('/{id}/quotes/{quoteId}/accept', [MatchingController::class, 'acceptQuote']);
+    });
+
+    // --- Matching : Côté artisan ---
+    Route::get('matching/available', [MatchingController::class, 'available']);
+    Route::post('matching/requests/{id}/quote', [MatchingController::class, 'submitQuote']);
+    Route::get('matching/my-quotes', [MatchingController::class, 'myQuotes']);
 
 });
 

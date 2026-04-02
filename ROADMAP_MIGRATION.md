@@ -11,7 +11,8 @@
 Phase 1 CRM █████████████████████ 100% — COMPLÈTE ✅
 Phase 2     █████████████████████ 100% — COMPLÈTE ✅
 Phase 3     █████████████████████ 100% — COMPLÈTE ✅
-Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0% — pas encore commencé
+Phase 4     ██████████░░░░░░░░░░░  50% — Matching en cours
+Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0% — pas encore commencé
 ```
 
 ---
@@ -60,16 +61,13 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-## 📋 PHASE 4 — Matching
+## 🔄 PHASE 4 — Matching
 
-> **Débloquer après** : Phase 3 complète
+> **Débloquée** : Phase 3 complète ✅
 
-| Module | Fichiers Emergent de référence | État |
-|---|---|---|
-| Demandes de travaux | `project_request_routes.py` + `project_request_models.py` | 📋 À faire |
-| Matching particuliers → artisans | `test_project_requests.py` + `test_marketplace_artisans.py` | 📋 À faire |
-
-### Branche prévue : `feature/matching-project-requests`
+| Module | Fichiers Emergent de référence | Branche | État |
+|---|---|---|---|
+| Demandes de travaux + devis artisans | `project_request_routes.py` + `project_request_models.py` | `feature/matching-project-requests` | 🔄 En cours |
 
 ---
 
@@ -111,5 +109,5 @@ Phase 4-5   ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 3 Ecosystem 100% terminée*
+*Dernière mise à jour : 2 Avril 2026 — Phase 4 Matching en cours*
 *Rédigé par : Fanomezantsoa + Claude*
