@@ -63,9 +63,12 @@ class CoreAuthService
                 'metier'               => $coreData['metier'] ?? null,
                 'company_name'         => $coreData['company_name'] ?? null,
                 'siret'                => $coreData['siret'] ?? null,
+                'bio'                  => $coreData['bio'] ?? null,
                 'is_verified'          => $coreData['is_verified'] ?? false,
+                'identity_status'      => $coreData['identity_status'] ?? null,
                 'is_active'            => $coreData['is_active'] ?? true,
                 'has_pro_subscription' => $coreData['has_pro_subscription'] ?? false,
+                'shop_enabled'         => $coreData['shop_enabled'] ?? false,
                 'last_synced_at'       => now(),
             ]
         );
