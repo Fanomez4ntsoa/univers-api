@@ -69,19 +69,19 @@ Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-## 📋 PHASE 5 — Features avancées
+## 🔄 PHASE 5 — Features avancées
 
-> **Débloquer après** : Phases 1-4 stables + frontend connecté
+> **Débloquée** : Phases 1-4 complètes ✅
 
-| Module | Fichiers Emergent de référence | État |
-|---|---|---|
-| Génération PDF (devis/factures) | `pdf_generator.py` | 📋 À faire |
-| Messagerie interne | `messaging_routes.py` + `messaging_models.py` | 📋 À faire |
-| Notifications | `notification_routes.py` + `push_routes.py` | 📋 À faire |
-| Pointage / Time tracking | `pointage_routes.py` + `test_pointage.py` | 📋 À faire |
-| Intégration email | `email_integration_routes.py` | 📋 À faire |
-| Intégration calendrier | `calendar_integration_routes.py` | 📋 À faire |
-| Paiements Stripe | `stripe_routes.py` + `stripe_models.py` | 📋 À faire |
+| Module | Fichiers Emergent de référence | Branche | État |
+|---|---|---|---|
+| Paiements Stripe | `stripe_routes.py` + `stripe_models.py` | `feature/stripe-payments` | 🔄 En cours |
+| Génération PDF (devis/factures) | `pdf_generator.py` | | 📋 À faire |
+| Messagerie interne | `messaging_routes.py` + `messaging_models.py` | | 📋 À faire |
+| Notifications | `notification_routes.py` + `push_routes.py` | | 📋 À faire |
+| Pointage / Time tracking | `pointage_routes.py` + `test_pointage.py` | | 📋 À faire |
+| Intégration email | `email_integration_routes.py` | | 📋 À faire |
+| Intégration calendrier | `calendar_integration_routes.py` | | 📋 À faire |
 
 ---
 
@@ -107,5 +107,5 @@ Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 4 Matching terminée*
+*Dernière mise à jour : 2 Avril 2026 — Phase 5 Stripe Payments en cours*
 *Rédigé par : Fanomezantsoa + Claude*

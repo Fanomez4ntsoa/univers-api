@@ -9,6 +9,7 @@ use App\Modules\Ecosystem\Controllers\PostController;
 use App\Modules\Ecosystem\Controllers\ShopController;
 use App\Modules\Ecosystem\Controllers\SocialController;
 use App\Modules\Matching\Controllers\MatchingController;
+use App\Modules\Subscription\Controllers\SubscriptionController;
 use App\Modules\CRM\Controllers\ClientController;
 use App\Modules\CRM\Controllers\CompanySettingController;
 use App\Modules\CRM\Controllers\InvoiceController;
@@ -172,7 +173,23 @@ Route::middleware('core.auth')->group(function () {
     Route::post('matching/requests/{id}/quote', [MatchingController::class, 'submitQuote']);
     Route::get('matching/my-quotes', [MatchingController::class, 'myQuotes']);
 
+    // --- Subscription : Stripe ---
+    Route::prefix('subscription')->group(function () {
+        Route::get('/status', [SubscriptionController::class, 'status']);
+        Route::post('/checkout', [SubscriptionController::class, 'checkout']);
+        Route::post('/cancel', [SubscriptionController::class, 'cancel']);
+        Route::get('/portal', [SubscriptionController::class, 'portal']);
+    });
+
 });
+
+/*
+|--------------------------------------------------------------------------
+| Stripe Webhook (public, signature-verified)
+|--------------------------------------------------------------------------
+*/
+
+Route::post('stripe/webhook', [SubscriptionController::class, 'webhook']);
 
 /*
 |--------------------------------------------------------------------------

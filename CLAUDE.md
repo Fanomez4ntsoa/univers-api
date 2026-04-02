@@ -361,7 +361,10 @@ GET    /api/matching/my-quotes                          → Mes devis soumis    
 
 - Module Matching : demandes de travaux + devis artisans + accept/refuse + available + my-quotes *(testé et validé Insomnia)*
 
-### 📋 À faire (Phase 5+)
+### 🔄 En cours (Phase 5)
+- Module Stripe : checkout + webhook + cancel + portal + status
+
+### 📋 À faire
 - Vérification du rôle `universe_slug = bati` sur le Core
 
 ---
@@ -481,5 +484,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 4 Matching terminée*
+*Dernière mise à jour : 2 Avril 2026 — Phase 5 Stripe Payments en cours*
 *Rédigé par : Fanomezantsoa + Claude*
