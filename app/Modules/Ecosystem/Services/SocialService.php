@@ -18,21 +18,21 @@ class SocialService
      * Discover artisans — paginated list with is_following flag.
      * Mirrors Emergent GET /search (type=users).
      */
-    public function discoverUsers(int $currentUserId, int $page = 1): LengthAwarePaginator
+    public function discoverUsers(?int $currentUserId, int $page = 1): LengthAwarePaginator
     {
         $paginated = User::where('is_active', true)
             ->select(self::PROFILE_FIELDS)
             ->orderByDesc('followers_count')
             ->paginate(20, ['*'], 'page', $page);
 
-        // Add is_following flag
-        $followingIds = UserFollow::where('follower_id', $currentUserId)
-            ->pluck('following_id')
-            ->toArray();
+        // Add is_following flag (guest = always false)
+        $followingIds = $currentUserId
+            ? UserFollow::where('follower_id', $currentUserId)->pluck('following_id')->toArray()
+            : [];
 
         $paginated->getCollection()->transform(function ($user) use ($followingIds, $currentUserId) {
             $user->is_following = in_array($user->id, $followingIds);
-            $user->is_self = $user->id === $currentUserId;
+            $user->is_self = $currentUserId !== null && $user->id === $currentUserId;
             return $user;
         });
 

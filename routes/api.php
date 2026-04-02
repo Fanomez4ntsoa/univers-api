@@ -19,11 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| AbracadaBati API Routes
+| Routes protégées (middleware core.auth — Bearer JWT du Core)
 |--------------------------------------------------------------------------
-| All routes require a valid JWT from AbracadaWorld Core.
-| The `core.auth` middleware calls GET /api/me on the Core and syncs
-| the local user. Use $request->attributes->get('auth_user') to access it.
 */
 
 Route::middleware('core.auth')->group(function () {
@@ -96,16 +93,13 @@ Route::middleware('core.auth')->group(function () {
         Route::put('/company', [CompanySettingController::class, 'update']);
     });
 
-    // --- Ecosystem : Posts / Feed ---
+    // --- Ecosystem : Posts (actions protégées) ---
     Route::prefix('ecosystem/posts')->group(function () {
-        Route::get('/', [PostController::class, 'index']);
         Route::post('/', [PostController::class, 'store']);
-        Route::get('/{id}', [PostController::class, 'show']);
         Route::put('/{id}', [PostController::class, 'update']);
         Route::delete('/{id}', [PostController::class, 'destroy']);
         Route::post('/{id}/like', [PostController::class, 'toggleLike']);
         Route::post('/{id}/comments', [PostController::class, 'addComment']);
-        Route::get('/{id}/comments', [PostController::class, 'listComments']);
     });
 
     // --- Ecosystem : Ma Boutique (protégé) ---
@@ -127,33 +121,25 @@ Route::middleware('core.auth')->group(function () {
         Route::post('/{id}/sold', [ListingController::class, 'markSold']);
     });
 
-    // --- Ecosystem : Jobs ---
+    // --- Ecosystem : Jobs (actions protégées) ---
     Route::prefix('ecosystem/jobs')->group(function () {
-        Route::get('/', [JobController::class, 'index']);
         Route::post('/', [JobController::class, 'store']);
-        Route::get('/{id}', [JobController::class, 'show']);
         Route::put('/{id}', [JobController::class, 'update']);
         Route::delete('/{id}', [JobController::class, 'destroy']);
         Route::post('/{id}/apply', [JobController::class, 'apply']);
         Route::get('/{id}/applications', [JobController::class, 'applications']);
     });
 
-    // --- Ecosystem : Events ---
+    // --- Ecosystem : Events (actions protégées) ---
     Route::prefix('ecosystem/events')->group(function () {
-        Route::get('/', [EventController::class, 'index']);
         Route::post('/', [EventController::class, 'store']);
-        Route::get('/{id}', [EventController::class, 'show']);
         Route::put('/{id}', [EventController::class, 'update']);
         Route::delete('/{id}', [EventController::class, 'destroy']);
         Route::post('/{id}/attend', [EventController::class, 'toggleAttend']);
     });
 
-    // --- Ecosystem : Réseau Social (profils + follow + feed) ---
-    Route::get('ecosystem/users', [SocialController::class, 'discoverUsers']);
-    Route::get('ecosystem/users/{id}', [SocialController::class, 'showProfile']);
+    // --- Ecosystem : Social (actions protégées) ---
     Route::post('ecosystem/users/{id}/follow', [SocialController::class, 'toggleFollow']);
-    Route::get('ecosystem/users/{id}/followers', [SocialController::class, 'followers']);
-    Route::get('ecosystem/users/{id}/following', [SocialController::class, 'following']);
     Route::get('ecosystem/feed', [SocialController::class, 'personalizedFeed']);
     Route::get('ecosystem/profile', [SocialController::class, 'myProfile']);
 
@@ -185,33 +171,47 @@ Route::middleware('core.auth')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
+| Routes publiques — Ecosystem (consultation sans auth)
+|--------------------------------------------------------------------------
+| Fidèle à Emergent : les GET de consultation sont publics.
+| Seules les actions (POST/PUT/DELETE, like, comment, follow, apply, attend)
+| restent protégées par core.auth ci-dessus.
+*/
+
+// --- Posts publics ---
+Route::get('ecosystem/posts', [PostController::class, 'index']);
+Route::get('ecosystem/posts/{id}', [PostController::class, 'show']);
+Route::get('ecosystem/posts/{id}/comments', [PostController::class, 'listComments']);
+
+// --- Jobs publics ---
+Route::get('ecosystem/jobs', [JobController::class, 'index']);
+Route::get('ecosystem/jobs/{id}', [JobController::class, 'show']);
+
+// --- Events publics ---
+Route::get('ecosystem/events', [EventController::class, 'index']);
+Route::get('ecosystem/events/{id}', [EventController::class, 'show']);
+
+// --- Profils publics ---
+Route::get('ecosystem/users', [SocialController::class, 'discoverUsers']);
+Route::get('ecosystem/users/{id}', [SocialController::class, 'showProfile']);
+Route::get('ecosystem/users/{id}/followers', [SocialController::class, 'followers']);
+Route::get('ecosystem/users/{id}/following', [SocialController::class, 'following']);
+
+// --- Boutiques publiques ---
+Route::get('ecosystem/shops', [ShopController::class, 'listPublic']);
+Route::get('ecosystem/shops/{slug}', [ShopController::class, 'showPublic']);
+
+// --- Annonces publiques ---
+Route::get('ecosystem/listings', [ListingController::class, 'listPublic']);
+Route::get('ecosystem/listings/{id}', [ListingController::class, 'showPublic']);
+
+/*
+|--------------------------------------------------------------------------
 | Stripe Webhook (public, signature-verified)
 |--------------------------------------------------------------------------
 */
 
 Route::post('stripe/webhook', [SubscriptionController::class, 'webhook']);
-
-/*
-|--------------------------------------------------------------------------
-| Boutiques publiques (sans auth Core)
-|--------------------------------------------------------------------------
-*/
-
-Route::prefix('ecosystem/shops')->group(function () {
-    Route::get('/', [ShopController::class, 'listPublic']);
-    Route::get('/{slug}', [ShopController::class, 'showPublic']);
-});
-
-/*
-|--------------------------------------------------------------------------
-| Annonces publiques (sans auth Core)
-|--------------------------------------------------------------------------
-*/
-
-Route::prefix('ecosystem/listings')->group(function () {
-    Route::get('/', [ListingController::class, 'listPublic']);
-    Route::get('/{id}', [ListingController::class, 'showPublic']);
-});
 
 /*
 |--------------------------------------------------------------------------

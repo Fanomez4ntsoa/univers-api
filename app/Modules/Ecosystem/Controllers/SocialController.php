@@ -14,11 +14,10 @@ class SocialController extends Controller
 
     public function discoverUsers(Request $request): JsonResponse
     {
-        /** @var User $user */
         $user = $request->attributes->get('auth_user');
         $page = (int) $request->query('page', 1);
 
-        return response()->json($this->socialService->discoverUsers($user->id, $page));
+        return response()->json($this->socialService->discoverUsers($user?->id, $page));
     }
 
     public function showProfile(int $id): JsonResponse
