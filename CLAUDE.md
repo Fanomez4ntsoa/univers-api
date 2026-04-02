@@ -336,6 +336,15 @@ POST   /api/matching/requests/{id}/quote                → Soumettre un devis (
 GET    /api/matching/my-quotes                          → Mes devis soumis                                → **(testé et validé Insomnia)**
 ```
 
+### Stripe Payments (Phase 5)
+```
+GET    /api/subscription/status    → Statut abonnement actuel                    → **(testé et validé Insomnia)**
+POST   /api/subscription/checkout  → Créer session Stripe Checkout               → **(testé et validé Insomnia)**
+POST   /api/subscription/cancel    → Annuler l'abonnement                        → **(testé et validé Insomnia)**
+GET    /api/subscription/portal    → Lien Stripe Customer Portal                 → **(testé et validé Insomnia)**
+POST   /api/stripe/webhook         → Webhook Stripe (signature vérifiée, public) → **(testé et validé Insomnia)**
+```
+
 ---
 
 ## 📁 Modules — État d'avancement
@@ -361,8 +370,7 @@ GET    /api/matching/my-quotes                          → Mes devis soumis    
 
 - Module Matching : demandes de travaux + devis artisans + accept/refuse + available + my-quotes *(testé et validé Insomnia)*
 
-### 🔄 En cours (Phase 5)
-- Module Stripe : checkout + webhook + cancel + portal + status
+- Module Stripe : checkout + webhook + cancel + portal + status *(testé et validé Insomnia)*
 
 ### 📋 À faire
 - Vérification du rôle `universe_slug = bati` sur le Core
@@ -484,5 +492,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 5 Stripe Payments en cours*
+*Dernière mise à jour : 2 Avril 2026 — Phase 5 Stripe terminé*
 *Rédigé par : Fanomezantsoa + Claude*

@@ -75,7 +75,7 @@ Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0%
 
 | Module | Fichiers Emergent de référence | Branche | État |
 |---|---|---|---|
-| Paiements Stripe | `stripe_routes.py` + `stripe_models.py` | `feature/stripe-payments` | 🔄 En cours |
+| Paiements Stripe | `stripe_routes.py` + `stripe_models.py` | `main` | ✅ Terminé + testé |
 | Génération PDF (devis/factures) | `pdf_generator.py` | | 📋 À faire |
 | Messagerie interne | `messaging_routes.py` + `messaging_models.py` | | 📋 À faire |
 | Notifications | `notification_routes.py` + `push_routes.py` | | 📋 À faire |
@@ -107,5 +107,5 @@ Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 5 Stripe Payments en cours*
+*Dernière mise à jour : 2 Avril 2026 — Phase 5 Stripe terminé*
 *Rédigé par : Fanomezantsoa + Claude*
