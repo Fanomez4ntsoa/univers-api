@@ -180,7 +180,7 @@ Toutes les requêtes sont filtrées par `owner_id`.
 
 | Table | Description | Clé métier |
 |-------|-------------|------------|
-| `users` | Synchro depuis Core `/me` | `core_uuid` (UUID du Core) |
+| `users` | Synchro depuis Core `/me` | `core_uuid`, `bio`, `identity_status`, `shop_enabled`, `followers_count`, `following_count`, `posts_count` |
 | `prospects` | Contacts avant conversion | `owner_id`, `status`, `pipeline_stage` |
 | `clients` | Convertis depuis prospect | `owner_id`, `prospect_id` |
 | `quotes` | Devis avec lignes JSON | `owner_id`, `client_id`, `status` |
