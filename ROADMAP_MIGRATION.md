@@ -11,7 +11,7 @@
 Phase 1 CRM █████████████████████ 100% — COMPLÈTE ✅
 Phase 2     █████████████████████ 100% — COMPLÈTE ✅
 Phase 3     █████████████████████ 100% — COMPLÈTE ✅
-Phase 4     ██████████░░░░░░░░░░░  50% — Matching en cours
+Phase 4     █████████████████████ 100% — COMPLÈTE ✅
 Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0% — pas encore commencé
 ```
 
@@ -61,13 +61,11 @@ Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-## 🔄 PHASE 4 — Matching
-
-> **Débloquée** : Phase 3 complète ✅
+## ✅ PHASE 4 — Matching
 
 | Module | Fichiers Emergent de référence | Branche | État |
 |---|---|---|---|
-| Demandes de travaux + devis artisans | `project_request_routes.py` + `project_request_models.py` | `feature/matching-project-requests` | 🔄 En cours |
+| Demandes de travaux + devis artisans | `project_request_routes.py` + `project_request_models.py` | `main` | ✅ Terminé + testé |
 
 ---
 
@@ -109,5 +107,5 @@ Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 4 Matching en cours*
+*Dernière mise à jour : 2 Avril 2026 — Phase 4 Matching terminée*
 *Rédigé par : Fanomezantsoa + Claude*

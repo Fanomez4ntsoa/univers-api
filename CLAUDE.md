@@ -322,6 +322,20 @@ GET    /api/ecosystem/feed                         → Feed personnalisé (posts
 GET    /api/ecosystem/profile                      → Mon profil avec stats                                                → **(testé et validé Insomnia)**
 ```
 
+### Matching (Phase 4 — middleware `core.auth`)
+```
+GET    /api/matching/requests                           → Mes demandes                                    → **(testé et validé Insomnia)**
+POST   /api/matching/requests                           → Créer une demande                               → **(testé et validé Insomnia)**
+GET    /api/matching/requests/{id}                      → Détail + devis reçus                            → **(testé et validé Insomnia)**
+PUT    /api/matching/requests/{id}                      → Modifier (bloqué si matched/closed)             → **(testé et validé Insomnia)**
+DELETE /api/matching/requests/{id}                      → Supprimer (bloqué si matched)                   → **(testé et validé Insomnia)**
+POST   /api/matching/requests/{id}/close                → Fermer la demande                               → **(testé et validé Insomnia)**
+POST   /api/matching/requests/{id}/quotes/{id}/accept   → Accepter un devis (matched + refused les autres) → **(testé et validé Insomnia)**
+GET    /api/matching/available                          → Demandes disponibles (côté artisan)             → **(testé et validé Insomnia)**
+POST   /api/matching/requests/{id}/quote                → Soumettre un devis (bloqué si déjà soumis)      → **(testé et validé Insomnia)**
+GET    /api/matching/my-quotes                          → Mes devis soumis                                → **(testé et validé Insomnia)**
+```
+
 ---
 
 ## 📁 Modules — État d'avancement
@@ -345,8 +359,7 @@ GET    /api/ecosystem/profile                      → Mon profil avec stats    
 - Module Ecosystem `Events` : événements CRUD + toggle inscription (bloqué si complet) + attendees_count auto *(testé et validé Insomnia)*
 - Module Ecosystem `Social` : discover users + profil public + follow/unfollow toggle + followers/following + feed personnalisé + mon profil *(testé et validé Insomnia)*
 
-### 🔄 En cours (Phase 4)
-- Module Matching : demandes de travaux + devis artisans + accept/refuse + available + my-quotes
+- Module Matching : demandes de travaux + devis artisans + accept/refuse + available + my-quotes *(testé et validé Insomnia)*
 
 ### 📋 À faire (Phase 5+)
 - Vérification du rôle `universe_slug = bati` sur le Core
@@ -468,5 +481,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 4 Matching en cours*
+*Dernière mise à jour : 2 Avril 2026 — Phase 4 Matching terminée*
 *Rédigé par : Fanomezantsoa + Claude*
