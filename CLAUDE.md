@@ -270,6 +270,13 @@ GET    /api/portal/{token}/invoices       → Liste des factures (hors drafts)  
 GET    /api/portal/{token}/invoices/{id}  → Détail d'une facture                                                        → **(testé et validé Insomnia)**
 ```
 
+### Publics — Contenu Landing Page (sans auth)
+```
+GET    /api/public/testimonials          → Témoignages actifs (public)                                                → **(testé et validé Insomnia)**
+GET    /api/public/faq                   → FAQ ordonnées (public)                                                     → **(testé et validé Insomnia)**
+GET    /api/public/stats                 → Statistiques clés (public)                                                 → **(testé et validé Insomnia)**
+```
+
 ### Ecosystem Social (Phase 3 — middleware `core.auth`)
 ```
 GET    /api/ecosystem/posts                        → Feed paginé (15/page)                                                → **(testé et validé Insomnia)**
@@ -371,6 +378,7 @@ POST   /api/stripe/webhook         → Webhook Stripe (signature vérifiée, pub
 - Module Matching : demandes de travaux + devis artisans + accept/refuse + available + my-quotes *(testé et validé Insomnia)*
 
 - Module Stripe : checkout + webhook + cancel + portal + status *(testé et validé Insomnia)*
+- Module Public Content : testimonials + FAQ + stats (seeders Emergent) *(testé et validé Insomnia)*
 
 ### 📋 À faire
 - Vérification du rôle `universe_slug = bati` sur le Core
