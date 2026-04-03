@@ -79,8 +79,8 @@ class StripeService
                 'price'    => $priceId,
                 'quantity' => 1,
             ]],
-            'success_url'            => config('app.url') . '/subscription/success?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url'             => config('app.url') . '/subscription/cancel',
+            'success_url'            => env('FRONTEND_URL', 'http://localhost:5173') . '/subscription?success=true',
+            'cancel_url'             => env('FRONTEND_URL', 'http://localhost:5173') . '/subscription?cancelled=true',
             'metadata'               => [
                 'user_id' => $userId,
                 'plan'    => $plan,
@@ -141,7 +141,7 @@ class StripeService
 
         $session = PortalSession::create([
             'customer'   => $subscription->stripe_customer_id,
-            'return_url' => config('app.url') . '/subscription',
+            'return_url' => env('FRONTEND_URL', 'http://localhost:5173') . '/subscription',
         ]);
 
         return ['portal_url' => $session->url];
