@@ -9,6 +9,7 @@ use App\Modules\Ecosystem\Controllers\PostController;
 use App\Modules\Ecosystem\Controllers\ShopController;
 use App\Modules\Ecosystem\Controllers\SocialController;
 use App\Modules\Matching\Controllers\MatchingController;
+use App\Modules\Public\Controllers\PublicContentController;
 use App\Modules\Subscription\Controllers\SubscriptionController;
 use App\Modules\CRM\Controllers\ClientController;
 use App\Modules\CRM\Controllers\CompanySettingController;
@@ -177,6 +178,11 @@ Route::middleware('core.auth')->group(function () {
 | Seules les actions (POST/PUT/DELETE, like, comment, follow, apply, attend)
 | restent protégées par core.auth ci-dessus.
 */
+
+// --- Contenu public (landing page) ---
+Route::get('public/testimonials', [PublicContentController::class, 'testimonials']);
+Route::get('public/faq', [PublicContentController::class, 'faq']);
+Route::get('public/stats', [PublicContentController::class, 'stats']);
 
 // --- Posts publics ---
 Route::get('ecosystem/posts', [PostController::class, 'index']);
