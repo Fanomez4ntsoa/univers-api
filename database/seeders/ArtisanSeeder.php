@@ -101,10 +101,11 @@ class ArtisanSeeder extends Seeder
                     'category'    => $artisan['metier'],
                     'city'        => $artisan['city'],
                     'is_active'   => true,
+                    'verified_at' => $index < 6 ? now() : null,
                 ]
             );
 
-            $this->command->info("  ✓ {$artisan['shop_name']} ({$artisan['city']})");
+            $this->command->info("  ✓ {$artisan['shop_name']} ({$artisan['city']})" . ($index < 6 ? ' [verified]' : ''));
         }
 
         $this->command->info('Done! 12 artisans seeded.');
