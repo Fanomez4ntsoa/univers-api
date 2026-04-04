@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             FaqItemSeeder::class,
             SiteStatSeeder::class,
             ArtisanSeeder::class,
+            ProductSeeder::class,
         ]);
     }
 }
