@@ -82,6 +82,7 @@ class ArtisanSeeder extends Seeder
                     'city'                 => $artisan['city'],
                     'metier'               => $artisan['metier'],
                     'company_name'         => $artisan['shop_name'],
+                    'phone'                => '+336' . rand(10000000, 99999999),
                     'is_verified'          => true,
                     'is_active'            => true,
                     'has_pro_subscription' => true,

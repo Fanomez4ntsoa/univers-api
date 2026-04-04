@@ -104,7 +104,7 @@ class ShopService
     public function listPublicShops(): Collection
     {
         return Shop::where('is_active', true)
-            ->with('user:id,display_name,avatar_url,metier')
+            ->with('user:id,display_name,avatar_url,metier,phone')
             ->orderByDesc('created_at')
             ->get();
     }
@@ -117,7 +117,7 @@ class ShopService
     {
         $shop = Shop::where('slug', $slug)
             ->where('is_active', true)
-            ->with('user:id,display_name,avatar_url,metier,city')
+            ->with('user:id,display_name,avatar_url,metier,city,phone')
             ->firstOrFail();
 
         $products = $shop->products()
