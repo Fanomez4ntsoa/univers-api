@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             SiteStatSeeder::class,
             ArtisanSeeder::class,
             ProductSeeder::class,
+            ListingSeeder::class,
         ]);
     }
 }
