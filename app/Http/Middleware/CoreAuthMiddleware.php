@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use App\Modules\Auth\Services\CoreAuthService;
 use Closure;
 use Illuminate\Http\Request;
@@ -28,6 +27,16 @@ class CoreAuthMiddleware
 
         // Sync or create local user from Core data
         $user = $this->coreAuthService->syncUser($coreUser);
+
+        // TODO: Remplacer par universe_slug = 'bati' quand
+        // GET /api/me exposera les univers de l'utilisateur
+        // Voir abracadaworld-core AuthService::formatProfile()
+        $allowedRoles = ['professionnel', 'particulier', 'admin'];
+        if (!in_array($user->role, $allowedRoles, true)) {
+            return response()->json([
+                'message' => "Accès refusé : votre rôle ne permet pas d'accéder à l'univers Bati.",
+            ], 403);
+        }
 
         // Attach user + raw token to request
         $request->attributes->set('auth_user', $user);

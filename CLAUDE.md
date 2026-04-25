@@ -379,9 +379,10 @@ POST   /api/stripe/webhook         → Webhook Stripe (signature vérifiée, pub
 
 - Module Stripe : checkout + webhook + cancel + portal + status *(testé et validé Insomnia)*
 - Module Public Content : testimonials + FAQ + stats (seeders Emergent) *(testé et validé Insomnia)*
+- Vérification du rôle `universe_slug = bati` sur le Core — Implémenté via whitelist de rôles (professionnel, particulier, admin) — TODO: migrer vers universe_slug quand Core exposera les univers dans /api/me
 
 ### 📋 À faire
-- Vérification du rôle `universe_slug = bati` sur le Core
+- _(rien pour le moment)_
 
 ---
 
@@ -500,5 +501,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 5 Stripe terminé*
+*Dernière mise à jour : 25 Avril 2026 — universe_slug check implémenté*
 *Rédigé par : Fanomezantsoa + Claude*
