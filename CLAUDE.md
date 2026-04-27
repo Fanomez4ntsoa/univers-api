@@ -187,6 +187,31 @@ Toutes les requêtes sont filtrées par `owner_id`.
 | `invoices` | Factures liées aux devis | `owner_id`, `client_id`, `quote_id`, `status` |
 | `chantiers` | Chantiers avec géolocalisation | `owner_id`, `client_id`, `quote_id`, `status` |
 | `company_settings` | Paramètres artisan (1 par user) | `user_id` (unique) |
+| `client_notes` | Notes (texte ou vocal) liées à un client | `client_id`, `owner_id`, `is_voice` |
+| `chantier_documents` | Documents attachés au chantier | `chantier_id`, `owner_id` |
+| `chantier_comments` | Fil de commentaires chantier | `chantier_id`, `owner_id` |
+| `chantier_time_entries` | Temps passé (recalcule rentabilité) | `chantier_id`, `owner_id` |
+| `chantier_costs` | Coûts annexes du chantier | `chantier_id`, `owner_id` |
+| `posts` | Publications du feed social | `user_id` |
+| `post_comments` | Commentaires sur posts | `post_id`, `user_id` |
+| `post_likes` | Likes (toggle) | `post_id`, `user_id` (unique) |
+| `shops` | Boutique artisan (1 par user) | `user_id` (unique), `slug` (unique) |
+| `shop_products` | Produits boutique | `shop_id`, `user_id` |
+| `listings` | Annonces marketplace | `user_id`, `category`, `status`, `expires_at` |
+| `jobs_offers` | Offres d'emploi | `user_id`, `is_active`, `expires_at` |
+| `job_applications` | Candidatures (1 par user/offre) | `job_id`, `user_id` (unique) |
+| `events` | Événements communauté | `user_id`, `status`, `start_date` |
+| `event_attendees` | Inscrits (toggle) | `event_id`, `user_id` (unique) |
+| `user_follows` | Relations follow/unfollow | `follower_id`, `following_id` (unique) |
+| `project_requests` | Demandes de travaux (particulier) | `user_id`, `status`, `category` |
+| `project_quotes` | Devis artisans pour une demande | `project_request_id`, `artisan_id` (unique) |
+| `subscriptions` | Abonnements Stripe | `user_id`, `stripe_subscription_id`, `status` |
+| `testimonials` | Témoignages (landing) | `is_active`, `order` |
+| `faq_items` | FAQ (landing) | `is_active`, `order` |
+| `site_stats` | Stats clés (landing) | `key` (unique) |
+
+### Seeders
+- `ArtisanSeeder`, `ProductSeeder`, `ListingSeeder` — données de démo, ne pas lancer en prod
 
 ### Enums importants
 ```
@@ -501,5 +526,5 @@ Un tableau vide `[]` sur un GET ne suffit pas — il faut valider la logique mé
 
 ---
 
-*Dernière mise à jour : 25 Avril 2026 — universe_slug check implémenté*
+*Dernière mise à jour : 25 Avril 2026 — tables et seeders documentés*
 *Rédigé par : Fanomezantsoa + Claude*
