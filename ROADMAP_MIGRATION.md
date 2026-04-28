@@ -73,15 +73,20 @@ Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0%
 
 > **Débloquée** : Phases 1-4 complètes ✅
 
-| Module | Fichiers Emergent de référence | Branche | État |
-|---|---|---|---|
-| Paiements Stripe | `stripe_routes.py` + `stripe_models.py` | `main` | ✅ Terminé + testé |
-| Génération PDF (devis/factures) | `pdf_generator.py` | | 📋 À faire |
-| Messagerie interne | `messaging_routes.py` + `messaging_models.py` | | 📋 À faire |
-| Notifications | `notification_routes.py` + `push_routes.py` | | 📋 À faire |
-| Pointage / Time tracking | `pointage_routes.py` + `test_pointage.py` | | 📋 À faire |
-| Intégration email | `email_integration_routes.py` | | 📋 À faire |
-| Intégration calendrier | `calendar_integration_routes.py` | | 📋 À faire |
+| Module | Fichiers Emergent de référence | Branche | État | Priorité |
+|---|---|---|---|---|
+| Paiements Stripe | `stripe_routes.py` | `main` | ✅ Terminé + testé | — |
+| PDF Export (devis/factures) | `pdf_export_routes.py` + `pdf_export_service.py` + `pdf_generator.py` | | 📋 À faire | 🔴 Tier 1 |
+| Upload / Files (R2) | `upload_routes.py` + `file_routes.py` + `r2_storage.py` | | 📋 À faire | 🔴 Tier 1 |
+| Notifications (in-app + email) | `notification_routes.py` + `email_service.py` | | 📋 À faire | 🔴 Tier 1 |
+| Messagerie 1:1 | `messaging_routes.py` + `messaging_models.py` | | 📋 À faire | 🔴 Tier 1 |
+| Pointage géolocalisé | `pointage_routes.py` | | 📋 À faire | 🟠 Tier 2 |
+| Compte-rendu chantier | `compte_rendu_routes.py` | | 📋 À faire | 🟠 Tier 2 |
+| Push Web | `push_routes.py` + `push_notification_routes.py` | | 📋 À faire | 🟠 Tier 2 |
+| Search | `search_routes.py` | | 📋 À faire | 🟡 Tier 3 |
+| Referral / parrainage | `referral_routes.py` | | 📋 À faire | 🟡 Tier 3 |
+| Google OAuth + Gmail/Calendar | `google_oauth_*` + `calendar_integration_*` | | 📋 À faire | 🟡 Tier 3 |
+| Intégration email (Resend) | `email_integration_routes.py` | | 📋 À faire | 🟡 Tier 3 |
 
 ---
 
@@ -107,5 +112,16 @@ Phase 5     ░░░░░░░░░░░░░░░░░░░░░   0%
 
 ---
 
-*Dernière mise à jour : 2 Avril 2026 — Phase 5 Stripe terminé*
+## ▶️ Reprise
+Prochain module à implémenter : PDF Export (Tier 1 — priorité absolue)
+Fichiers Emergent de référence :
+- `~/project/AbracadaBati/backend/pdf_export_routes.py`
+- `~/project/AbracadaBati/backend/pdf_export_service.py`
+- `~/project/AbracadaBati/backend/pdf_generator.py`
+
+Méthode : lire les 3 fichiers → extraire endpoints + logique → adapter Laravel DDD → tester Insomnia → merger
+
+---
+
+*Dernière mise à jour : 2026-04-28 — Phase 5 priorisée Tier 1/2/3*
 *Rédigé par : Fanomezantsoa + Claude*
