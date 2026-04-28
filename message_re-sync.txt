@@ -1,0 +1,17 @@
+Lis CLAUDE.md et ROADMAP_MIGRATION.md entièrement.
+
+Je veux un rapport de l'état actuel de la migration :
+
+1. Ce qui a changé dans le projet Emergent de référence 
+   depuis la dernière fois (git diff ou analyse des fichiers) :
+   ~/project/AbracadaBati/backend/
+
+2. Ce qui est encore manquant dans abracadabativ2 
+   par rapport à Emergent — par ordre de priorité métier Bati
+   (ignore Stories, Cinema, AbracaCoins, Marketplace B2B2C, etc.)
+
+3. Est-ce que ROADMAP_MIGRATION.md est encore à jour 
+   ou faut-il l'ajuster ?
+
+Rapport uniquement, ne touche à rien.
+Ne crée pas de worktree.
